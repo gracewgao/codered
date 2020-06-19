@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">codered</string>
+
     <string name="title_home">requests</string>
     <!--<string name="title_dashboard">Dashboard</string>-->
     <string name="title_notifications">learn</string>
+
+    <string-array name="product_array">
+        <item>Tampon</item>
+        <item>Pad</item>
+        <item>Painkiller</item>
+    </string-array>
+
 </resources>

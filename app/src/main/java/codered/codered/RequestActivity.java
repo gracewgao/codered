@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -13,6 +14,7 @@ public class RequestActivity extends AppCompatActivity {
 
     private Button submitButton;
     private EditText messageEditText;
+    private Spinner productSpinner;
 
     // Firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
@@ -31,6 +33,7 @@ public class RequestActivity extends AppCompatActivity {
         });
 
         messageEditText = findViewById(R.id.message_text);
+        productSpinner = findViewById(R.id.products_spinner);
 
     }
 
@@ -39,9 +42,11 @@ public class RequestActivity extends AppCompatActivity {
         // gets the generated id from firebase
         DatabaseReference requestRef = fireRef.child("requests");
         String rId = requestRef.push().getKey();
-        // get whatever message was in the textbox
+        // get whatever data is currently selected on the screen
         String message = messageEditText.getText().toString();
-        Request r = new Request(rId, message);
+        int product = productSpinner.getSelectedItemPosition();
+        // creates new request object
+        Request r = new Request(rId, product, message);
         requestRef.child(rId).setValue(r);
 
         finish();

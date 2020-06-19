@@ -2,13 +2,14 @@ package codered.codered;
 
 class Request {
 
-    private String id;
-    private String message;
+    private String id, message;
+    private int product;
 
     public Request(){}
 
-    public Request(String requestId, String m){
+    public Request(String requestId, int p, String m){
         this.id = requestId;
+        this.product = p;
         this.message = m;
     }
 
@@ -27,5 +28,13 @@ class Request {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public int getProduct() {
+        return product;
+    }
+
+    public void setProduct(int product) {
+        this.product = product;
     }
 }
