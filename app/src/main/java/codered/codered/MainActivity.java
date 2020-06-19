@@ -50,14 +50,14 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-//        requestButton = findViewById(R.id.requestButton);
-//        requestButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(MainActivity.this, RequestActivity.class);
-//                MainActivity.this.startActivity(i);
-//            }
-//        });
+        requestButton = findViewById(R.id.request_button);
+        requestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, RequestActivity.class);
+                MainActivity.this.startActivity(i);
+            }
+        });
 
     }
 
