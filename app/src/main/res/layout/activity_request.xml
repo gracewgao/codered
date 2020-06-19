@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".RequestActivity">
 
+    <EditText
+        android:id="@+id/message_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/submit_button"
         android:text="Submit"
