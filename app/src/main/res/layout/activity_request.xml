@@ -5,16 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RequestActivity">
-
-    <EditText
-        android:id="@+id/message_text"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/submit_button"
-        android:text="Submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <!-- spinner for product array-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose a product" />
+        <Spinner
+            android:id="@+id/products_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/product_array"
+            />
+
+        <!-- textbox for message-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add a message" />
+        <EditText
+            android:id="@+id/message_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- submit button-->
+        <Button
+            android:id="@+id/submit_button"
+            android:text="Submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>
