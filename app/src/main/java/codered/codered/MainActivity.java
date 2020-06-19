@@ -1,10 +1,13 @@
 package codered.codered;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -14,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Views
     private TextView mTextMessage;
+    private Button requestButton;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -35,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     // Firebase
-    DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference(); 
+    DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,16 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+//        requestButton = findViewById(R.id.requestButton);
+//        requestButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(MainActivity.this, RequestActivity.class);
+//                MainActivity.this.startActivity(i);
+//            }
+//        });
+
     }
 
 }
