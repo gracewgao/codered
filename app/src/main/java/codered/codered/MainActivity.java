@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, RequestDetailActivity.class);
-//                i.putExtra("UID", r.getId());
-                i.putExtra("UID", "-MADgB0kTVdXQnM615tX");
+//                i.putExtra("RID", r.getId());
+                i.putExtra("RID", "-MADgB0kTVdXQnM615tX");
                 MainActivity.this.startActivity(i);
             }
         });
