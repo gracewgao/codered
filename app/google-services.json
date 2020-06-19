@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "955143183911",
+    "firebase_url": "https://code-red-hack.firebaseio.com",
+    "project_id": "code-red-hack",
+    "storage_bucket": "code-red-hack.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955143183911:android:26643229016d2f80c4b802",
+        "android_client_info": {
+          "package_name": "codered.codered"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955143183911-lk41rnou8quvmv43q1qi6v2h1k10htia.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSYSF3D9Lu56G0CRlqXuBTtOboJ_oZhng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "955143183911-lk41rnou8quvmv43q1qi6v2h1k10htia.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

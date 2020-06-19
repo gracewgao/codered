@@ -7,10 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class MainActivity extends AppCompatActivity {
 
+    // Views
     private TextView mTextMessage;
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -30,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
+
+    // Firebase
+    DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference(); 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
