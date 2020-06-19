@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="PAINKILLERS  |  30 sec ago"
-            android:fontFamily="@font/chivo"
+            android:fontFamily="@font/poppins"
             android:textColor="#F18686"
             android:textSize="48px"
             android:layout_marginTop="20dp"
