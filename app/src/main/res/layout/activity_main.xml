@@ -5,17 +5,30 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF8F8"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="what is up my dudes"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/chivo"
+        android:text="Requests Near You"
+        android:textColor="#F18686"
+        android:textSize="72px"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="102dp"
+        android:layout_height="154dp"
+        android:src="@drawable/ic_group_9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
