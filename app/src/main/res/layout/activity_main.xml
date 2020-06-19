@@ -12,7 +12,7 @@
         android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="52dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="52dp"
         android:fontFamily="@font/chivo"
         android:text="Requests Near You"
@@ -28,6 +28,33 @@
         android:src="@drawable/ic_group_9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="40dp"
+        android:layout_width="275dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/info_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="PAINKILLERS  |  30 sec ago"
+            android:fontFamily="@font/poppins"
+            android:textColor="#F18686"
+            android:textSize="48px"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="60dp"
+            android:textStyle="bold"
+            />
+
+
+    </android.support.v7.widget.CardView>
 
 
     <android.support.design.widget.BottomNavigationView
@@ -49,7 +76,7 @@
         android:layout_width="219dp"
         android:layout_height="131dp"
         android:layout_marginStart="52dp"
-        android:layout_marginBottom="350dp"
+        android:layout_marginBottom="100dp"
         android:text="Button"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintStart_toStartOf="parent" />

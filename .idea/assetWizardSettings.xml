@@ -33,8 +33,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_baseline_book_24" />
-                            <entry key="sourceFile" value="C:\Users\wudyw\Downloads\Group 11.svg" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_pill" />
+                            <entry key="sourceFile" value="C:\Users\bonni\Downloads\pill.svg" />
                           </map>
                         </option>
                       </PersistentState>
