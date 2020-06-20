@@ -1,5 +1,6 @@
 package codered.codered;
 
+import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,11 +23,14 @@ public class RequestActivity extends AppCompatActivity {
 
     // Firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
+    /*private FusedLocationProviderClient fusedLocationClient;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
+
+        /*fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);*/
 
         submitButton = findViewById(R.id.submit_button);
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -69,4 +73,14 @@ public class RequestActivity extends AppCompatActivity {
                 });;
 
     }
+    /*fusedLocationClient.getLastLocation()
+            .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+        @Override
+        public void onSuccess(Location location) {
+            // Got last known location. In some rare situations this can be null.
+            if (location != null) {
+                // Logic to handle location object
+            }
+        }
+    });*/
 }
