@@ -12,11 +12,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import static codered.codered.MainActivity.products;
+import static codered.codered.MainActivity.states;
 
 public class RequestDetailActivity extends AppCompatActivity {
 
     private static final String TAG = "RequestDetailActivity";
-    private TextView timeText, messageText, productText;
+    private TextView timeText, messageText, productText, statusText;
     private String rId;
 
     // Firebase
@@ -30,6 +31,7 @@ public class RequestDetailActivity extends AppCompatActivity {
         timeText = findViewById(R.id.read_time);
         messageText = findViewById(R.id.read_message);
         productText = findViewById(R.id.read_product);
+        statusText = findViewById(R.id.read_status);
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
@@ -42,6 +44,7 @@ public class RequestDetailActivity extends AppCompatActivity {
                 Request r = dataSnapshot.getValue(Request.class);
                 messageText.setText(r.getMessage());
                 productText.setText(products[r.getProduct()]);
+                statusText.setText(states[r.getStatus()]);
             }
 
             @Override

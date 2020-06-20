@@ -16,8 +16,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
-    // array to translate saved index into a string
+    // arrays to translate saved index into a string
     public static String[] products = {"Tampon", "Pad", "Painkiller"};
+    public static String[] states = {"Pending", "Answered", "Cancelled"};
 
     // Views
     private TextView mTextMessage;

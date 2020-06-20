@@ -3,7 +3,7 @@ package codered.codered;
 class Request {
 
     private String id, message;
-    private int product;
+    private int product, status;
 
     public Request(){}
 
@@ -11,6 +11,8 @@ class Request {
         this.id = requestId;
         this.product = p;
         this.message = m;
+        // sets status to pending when created
+        this.status = 0;
     }
 
 
@@ -36,5 +38,13 @@ class Request {
 
     public void setProduct(int product) {
         this.product = product;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }
