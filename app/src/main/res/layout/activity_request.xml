@@ -97,6 +97,7 @@
                         android:text="Use current location"
                         android:layout_marginLeft="40dp"
                         android:layout_marginTop="20dp"
+                        android:fontFamily="@font/poppins"
                         />
 
                     <RadioButton
@@ -105,6 +106,7 @@
                         android:layout_height="wrap_content"
                         android:text="Choose another location"
                         android:layout_marginLeft="40dp"
+                        android:fontFamily="@font/poppins"
                         />
                 </RadioGroup>
 
@@ -133,6 +135,7 @@
                         android:text="ASAP"
                         android:layout_marginLeft="40dp"
                         android:layout_marginTop="20dp"
+                        android:fontFamily="@font/poppins"
                         />
 
                     <RadioButton
@@ -141,6 +144,7 @@
                         android:layout_height="wrap_content"
                         android:text="Choose another time"
                         android:layout_marginLeft="40dp"
+                        android:fontFamily="@font/poppins"
                         />
                 </RadioGroup>
 
@@ -175,6 +179,7 @@
                     android:text="Add a message"
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppins"
                     />
 
                 <EditText
@@ -184,6 +189,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="20dp"
+                    android:fontFamily="@font/poppins"
                     />
 
                 <!--code word-->
@@ -206,12 +212,15 @@
                     android:background="#F18686" />
                 <!-- submit button-->
                 <Button
+                    android:layout_gravity="right"
+                    android:layout_alignParentRight="true"
                     android:id="@+id/submit_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="NEXT"
                     android:layout_marginTop="30dp"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginRight="30dp"
                     android:textColor="#FFFFFF"
                     android:fontFamily="@font/poppins_medium"
                     android:background="@drawable/buttonstuff"
