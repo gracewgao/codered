@@ -1,7 +1,10 @@
 package codered.codered;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +13,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -21,19 +26,20 @@ public class RequestActivity extends AppCompatActivity {
     private EditText messageEditText;
     private Spinner productSpinner;
 
+    private FusedLocationProviderClient fusedLocationClient;
+
     // Firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
-    /*private FusedLocationProviderClient fusedLocationClient;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
 
-        /*fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);*/
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         locationButton = findViewById(R.id.location_button);
-        locationButton.setOnClickListener(new View.OnClickListener(){
+        locationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // open map here
@@ -54,7 +60,7 @@ public class RequestActivity extends AppCompatActivity {
 
     }
 
-    private void submitRequest(){
+    private void submitRequest() {
 
         // gets the generated id from firebase
         DatabaseReference requestRef = fireRef.child("requests");
@@ -63,6 +69,24 @@ public class RequestActivity extends AppCompatActivity {
         String message = messageEditText.getText().toString();
         int product = productSpinner.getSelectedItemPosition();
         String code = Request.generateCode();
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling ActivityCompat#requestPermissions
+
+            fusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            // Got last known location. In some rare situations this can be null.
+                            if (location != null) {
+                                // Logic to handle location object
+                            }
+                        }
+                    });
+            return;
+        }
+
+
         // creates new request object
         Request r = new Request(rId, product, message, code);
         requestRef.child(rId).setValue(r)
@@ -81,16 +105,6 @@ public class RequestActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Uh-oh! something went wrong, please try again.",Toast.LENGTH_SHORT).show();
                     }
                 });;
-
     }
-    /*fusedLocationClient.getLastLocation()
-            .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-        @Override
-        public void onSuccess(Location location) {
-            // Got last known location. In some rare situations this can be null.
-            if (location != null) {
-                // Logic to handle location object
-            }
-        }
-    });*/
+
 }
