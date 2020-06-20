@@ -34,7 +34,7 @@ public class LearnFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), SafetyActivity.class);
+                Intent i = new Intent(getActivity(), ProductsActivity.class);
                 getActivity().startActivity(i);
             }
         });
