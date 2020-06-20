@@ -24,7 +24,7 @@ import static codered.codered.Request.states;
 public class RequestDetailActivity extends AppCompatActivity {
 
     private static final String TAG = "RequestDetailActivity";
-    private TextView timeText, messageText, productText, statusText, distanceText, codeText;
+    private TextView timeText, messageText, productText, distanceText, codeText;
     private String rId;
 
     // Firebase
@@ -40,11 +40,10 @@ public class RequestDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_request_detail);
-        // timeText = findViewById(R.id.read_time);
+//         timeText = findViewById(R.id.read_time);
         messageText = findViewById(R.id.read_message);
-        // productText = findViewById(R.id.read_product);
-        // statusText = findViewById(R.id.read_status);
-        // distanceText = findViewById(R.id.read_location);
+         productText = findViewById(R.id.read_product);
+         distanceText = findViewById(R.id.read_location);
         codeText = findViewById(R.id.read_code);
 
         Bundle extras = getIntent().getExtras();
@@ -78,9 +77,8 @@ public class RequestDetailActivity extends AppCompatActivity {
                 Request r = dataSnapshot.getValue(Request.class);
                 messageText.setText(r.getMessage());
                 productText.setText(Request.products[r.getProduct()]);
-                statusText.setText(Request.states[r.getStatus()]);
                 String time = Request.convertTime((long)r.getTimestamp());
-                timeText.setText(time);
+//                timeText.setText(time);
                 String distance = RequestFragment.findDistance(location, r.getLat(), r.getLng())+ " m away";
                 distanceText.setText(distance);
                 codeText.setText(r.getCode());
