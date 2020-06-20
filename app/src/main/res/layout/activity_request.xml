@@ -207,8 +207,8 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/poppins"
-                    android:textSize="16dp"
-                    android:hint="Meet at..."
+                    android:textSize="14dp"
+                    android:hint="Anything you want to add?"
                     android:maxLength="50"/>
                 </android.support.design.widget.TextInputLayout>
 
