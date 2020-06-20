@@ -72,6 +72,12 @@
                 android:textSize="48px"
                 android:textStyle="bold"/>
 
+            <Button
+                android:id="@+id/location_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose location"/>
+
             <View
                 android:layout_width="211dp"
                 android:layout_height="2dp"
