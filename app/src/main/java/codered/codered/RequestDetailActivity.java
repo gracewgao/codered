@@ -79,5 +79,9 @@ public class RequestDetailActivity extends AppCompatActivity {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
+
+        // sets status as answered
+        fireRef.child("requests").child(rId).child("status").setValue(1);
+
     }
 }
