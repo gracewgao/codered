@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent">
     <TextView
         android:id="@+id/message"
@@ -13,5 +14,81 @@
         android:textSize="72px"
         android:textStyle="bold"/>
 
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card1"
+                android:layout_width="285dp"
+                android:layout_height="160dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="120dp"
+                app:cardCornerRadius="15dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cardone"/>
+
+                <TextView
+                    android:id="@+id/info_text1"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Discover menstrual health resources"
+                    android:textColor="#FFFFFF"
+                    android:textFontWeight="500"
+                    android:textStyle="bold"
+                    android:textSize="36px" />
+
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card2"
+                android:layout_width="285dp"
+                android:layout_height="160dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="40dp"
+                app:cardCornerRadius="15dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cardtwo"
+                    />
+
+                <TextView
+                    android:id="@+id/info_text2"
+                    android:layout_width="92dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Find out what products are right for you"
+                    android:textColor="#4F4F51"
+                    android:textFontWeight="500"
+                    android:textSize="36px"
+                    android:textStyle="bold" />
+
+            </android.support.v7.widget.CardView>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
