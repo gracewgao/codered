@@ -40,7 +40,6 @@ public class RequestDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_request_detail);
-
         // timeText = findViewById(R.id.read_time);
         messageText = findViewById(R.id.read_message);
         // productText = findViewById(R.id.read_product);
