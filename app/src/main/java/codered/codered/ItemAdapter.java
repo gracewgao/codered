@@ -9,7 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.firebase.database.ServerValue;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
     private static final String TAG = ItemAdapter.class.getSimpleName();
@@ -22,7 +30,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         public TextView timeTopTv, messageTv, productTv;
         public ImageView iconImg;
         public CardView cardView;
-
 
         public TextView textView;
         public MyViewHolder(View v) {
@@ -37,7 +44,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
 
     // constructor
     public ItemAdapter(List<Request> requests, Location l, MainActivity m) {
-        requestList = requests;
+        requestList = sortRequests(requests);
         location = l;
         main = m;
     }
@@ -84,4 +91,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     public int getItemCount() {
         return requestList.size();
     }
+
+    private List<Request> sortRequests(List<Request> requests){
+
+        return requests;
+    }
+
 }

@@ -2,15 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="codered.codered">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RequestDetailActivity"></activity>
+        <activity android:name=".SafetyActivity"></activity>
+        <activity android:name=".RequestDetailActivity" />
         <activity android:name=".RequestActivity" />
         <activity
             android:name=".MainActivity"
@@ -22,5 +21,7 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>
