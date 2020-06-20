@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -28,10 +29,12 @@ public class RequestActivity extends AppCompatActivity {
     private RadioButton currentLocationButton, chooseLocationButton, currentTimeButton, chooseTimeButton;
     private EditText messageEditText;
     private Spinner productSpinner;
+    private TextView codeTv;
 
     private FusedLocationProviderClient fusedLocationClient;
     private double lat, lng;
     private Object meetTime;
+    private String code;
 
     private final int REQUEST_ACCESS_FINE_LOCATION=1;
 
@@ -124,6 +127,9 @@ public class RequestActivity extends AppCompatActivity {
         messageEditText = findViewById(R.id.message_text);
         productSpinner = findViewById(R.id.products_spinner);
 
+        codeTv = findViewById(R.id.code_text);
+        code = Request.generateCode();
+        codeTv.setText(code);
 
     }
 
@@ -135,7 +141,6 @@ public class RequestActivity extends AppCompatActivity {
         // get whatever data is currently selected on the screen
         String message = messageEditText.getText().toString();
         int product = productSpinner.getSelectedItemPosition();
-        String code = Request.generateCode();
 
         // creates new request object
         Request r = new Request(rId, product, message, code, lat, lng, meetTime);

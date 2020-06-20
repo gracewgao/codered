@@ -233,7 +233,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/chivo"
-                    android:text="5 - CHOOSE A CODE WORD"
+                    android:text="5 - YOUR CODE WORD"
                     android:textColor="#F18686"
                     android:textSize="48px"
                     android:textStyle="bold" />
@@ -250,8 +250,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="16dp"
-                    />
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/border"
+                    android:fontFamily="@font/poppins"
+                    android:padding="15dp"
+                    android:text="Crunchy Bananas"
+                    android:textColor="#F18686"
+                    android:textSize="40px" />
 
                 <!-- submit button-->
                 <Button
