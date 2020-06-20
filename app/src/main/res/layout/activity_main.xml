@@ -321,7 +321,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins"
-                    android:text="5 min away"
+                    android:text="8 min away"
                     android:textColor="#FFFFFF"
                     android:textSize="42px"
                     android:textStyle="bold"
