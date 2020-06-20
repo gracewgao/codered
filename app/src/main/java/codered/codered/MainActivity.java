@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        detailCard = findViewById(R.id.card_view);
+        detailCard = findViewById(R.id.card1);
         detailCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
