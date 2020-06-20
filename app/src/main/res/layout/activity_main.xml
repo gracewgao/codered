@@ -19,7 +19,7 @@
         android:text="Requests Near You"
         android:textColor="#F18686"
         android:textSize="72px"
-        android:textStyle="bold"
+        android:textFontWeight="700"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,20 +37,20 @@
         app:cardBackgroundColor="#F18686"
         >
 
-    <TextView
-        android:id="@+id/timeaway1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="3 min away"
-        android:fontFamily="@font/poppins"
-        android:textColor="#FFFFFF"
-        android:textSize="42px"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        <TextView
+            android:id="@+id/timeaway1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="3 min away"
+            android:fontFamily="@font/poppins"
+            android:textColor="#FFFFFF"
+            android:textSize="42px"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
     </android.support.v7.widget.CardView>
 
@@ -88,7 +88,7 @@
             android:layout_marginTop="65dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textStyle="bold"
+            android:textFontWeight="500"
             />
 
         <ImageView
@@ -107,7 +107,7 @@
         android:layout_height="80dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:cardBackgroundColor="#F18686"
+        app:cardBackgroundColor="#FAA5A5"
         app:cardCornerRadius="15dp"
         >
 
@@ -143,7 +143,7 @@
             android:id="@+id/item2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="TAMPONS  |  2 min ago"
+            android:text="TAMPONS  |  3 min ago"
             android:fontFamily="@font/poppins"
             android:textColor="#F18686"
             android:textSize="48px"
@@ -155,19 +155,96 @@
             android:id="@+id/info_text2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="I’ll be right outside the door of Subway holding a cup of coffee..."
+            android:text="I’ll be right outside the door of Subway holding a Starbucks frappuccino..."
             android:fontFamily="@font/poppins"
             android:textColor="#2A2A2A"
             android:textSize="36px"
             android:layout_marginTop="65dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textStyle="bold"
+            android:textFontWeight="500"
             />
+        <ImageView
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:src="@drawable/tampon" />
 
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:id="@+id/card2top"
+        android:layout_marginTop="530dp"
+        android:layout_marginLeft="40dp"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardBackgroundColor="#FABEBE"
+        app:cardCornerRadius="15dp"
+        >
+
+        <TextView
+            android:id="@+id/timeaway2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="6 min away"
+            android:fontFamily="@font/poppins"
+            android:textColor="#FFFFFF"
+            android:textSize="42px"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
     </android.support.v7.widget.CardView>
 
+    <android.support.v7.widget.CardView
+        android:id="@+id/card2"
+        android:layout_marginTop="570dp"
+        android:layout_marginLeft="40dp"
+        android:layout_width="285dp"
+        android:layout_height="135dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/item2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="PADS  |  2 min ago"
+            android:fontFamily="@font/poppins"
+            android:textColor="#F18686"
+            android:textSize="48px"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="60dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/info_text2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Any sanitary napkin you have would help, doesn’t matter to me!"
+            android:fontFamily="@font/poppins"
+            android:textColor="#2A2A2A"
+            android:textSize="36px"
+            android:layout_marginTop="65dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textFontWeight="500"
+            />
+        <ImageView
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:src="@drawable/pad" />
+
+    </android.support.v7.widget.CardView>
 
 
     <android.support.design.widget.BottomNavigationView
@@ -186,13 +263,12 @@
 
     <Button
         android:id="@+id/request_button"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginBottom="0dp"
-        android:text="Button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/reqbutton"
 
         app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
