@@ -263,6 +263,10 @@
 
     <Button
         android:id="@+id/request_button"
+<<<<<<< Updated upstream
+=======
+        android:layout_marginBottom="30dp"
+>>>>>>> Stashed changes
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/reqbutton"
