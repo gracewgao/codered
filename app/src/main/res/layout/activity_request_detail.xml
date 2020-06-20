@@ -5,27 +5,127 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RequestDetailActivity">
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="350dp"
+        android:layout_height="670dp"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/read_product"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/read_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/read_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/read_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            <!--product-->
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/chivo"
+                android:text="Request Details"
+                android:textColor="#F18686"
+                android:textSize="72px"
+                android:textStyle="bold"/>
+            <!--product-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/chivo"
+                android:text="PRODUCT"
+                android:textColor="#F18686"
+                android:textSize="48px"
+                android:textStyle="bold"/>
 
+            <View
+                android:layout_width="85dp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="8dp"
+                android:background="#F18686"
+                />
+            <TextView
+                android:id="@+id/read_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <!--location-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/chivo"
+                android:text="LOCATION"
+                android:textColor="#F18686"
+                android:textSize="48px"
+                android:textStyle="bold"/>
+
+            <View
+                android:layout_width="90dp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="8dp"
+                android:background="#F18686"
+                />
+
+            <TextView
+                android:id="@+id/read_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <!--description-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/chivo"
+                android:text="DESCRIPTION"
+                android:textColor="#F18686"
+                android:textSize="48px"
+                android:textStyle="bold"/>
+
+            <View
+                android:layout_width="120dp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="8dp"
+                android:background="#F18686"
+                />
+            <TextView
+                android:id="@+id/read_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <!--codeword-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/chivo"
+                android:text="CODE WORD"
+                android:textColor="#F18686"
+                android:textSize="48px"
+                android:textStyle="bold"/>
+
+            <View
+                android:layout_width="110dp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="8dp"
+                android:background="#F18686"
+                />
+            <TextView
+                android:id="@+id/read_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>
