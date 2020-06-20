@@ -53,8 +53,9 @@ public class RequestActivity extends AppCompatActivity {
         // get whatever data is currently selected on the screen
         String message = messageEditText.getText().toString();
         int product = productSpinner.getSelectedItemPosition();
+        String code = Request.generateCode();
         // creates new request object
-        Request r = new Request(rId, product, message);
+        Request r = new Request(rId, product, message, code);
         requestRef.child(rId).setValue(r)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

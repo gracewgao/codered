@@ -45,6 +45,8 @@ public class RequestDetailActivity extends AppCompatActivity {
                 messageText.setText(r.getMessage());
                 productText.setText(products[r.getProduct()]);
                 statusText.setText(states[r.getStatus()]);
+                String time = Request.convertTime((long)r.getTimestamp());
+                timeText.setText(time);
             }
 
             @Override
