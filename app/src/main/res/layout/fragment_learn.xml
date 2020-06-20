@@ -49,10 +49,10 @@
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/poppins"
                     android:text="Discover menstrual health resources"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#FFFDFD"
                     android:textFontWeight="500"
                     android:textStyle="bold"
-                    android:textSize="40px" />
+                    android:textSize="38px" />
 
 
             </android.support.v7.widget.CardView>
@@ -83,11 +83,40 @@
                     android:text="Find out what products are right for you"
                     android:textColor="#4F4F51"
                     android:textFontWeight="500"
-                    android:textSize="40px"
+                    android:textSize="38px"
                     android:textStyle="bold" />
 
             </android.support.v7.widget.CardView>
 
+            <android.support.v7.widget.CardView
+                android:id="@+id/card3"
+                android:layout_width="285dp"
+                android:layout_height="160dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="40dp"
+                app:cardCornerRadius="15dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cardthree"
+                    />
+
+                <TextView
+                    android:id="@+id/info_text3"
+                    android:layout_width="92dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="How to stay safe using CodeRed"
+                    android:textColor="#FFFFFF"
+                    android:textFontWeight="500"
+                    android:textSize="40px"
+                    android:textStyle="bold" />
+
+            </android.support.v7.widget.CardView>
 
 
 
