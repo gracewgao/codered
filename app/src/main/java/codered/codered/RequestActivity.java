@@ -159,7 +159,7 @@ public class RequestActivity extends AppCompatActivity {
                         // failed to save
                         Toast.makeText(getApplicationContext(),"Uh-oh! something went wrong, please try again.",Toast.LENGTH_SHORT).show();
                     }
-                });;
+                });
     }
 
 }
