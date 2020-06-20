@@ -43,31 +43,43 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="40dp"
                     android:fontFamily="@font/chivo"
-                    android:text="1 - SEND A REQUEST"
+                    android:text="1. Don’t disclose any personal
+                     information"
                     android:textColor="#FFFFFF"
                     android:textSize="48px"
                     android:textStyle="bold" />
 
-                <View
-                    android:layout_width="170dp"
-                    android:layout_height="2dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="8dp"
-                    android:background="#FFFFFF" />
 
+                <ImageView
+
+                    android:layout_width="114dp"
+                    android:layout_height="103dp"
+                    android:layout_marginLeft="220dp"
+                    android:layout_marginBottom="-80dp"
+                    android:paddingTop="40dp"
+                    android:src="@drawable/safe1" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="164dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="20dp"
-                    android:textColor="#FFFFFF"
                     android:layout_marginRight="40dp"
-                    android:background="@drawable/product_spinner"
-                    android:paddingLeft="25dp"
-                    android:text="filler text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+
+                    android:text="Keep your name, phone number or any other personal details confidential."
+                    android:fontFamily="@font/poppins"
+                    android:textSize="36px"
+                    android:textColor="#FFFFFF" />
+
+
+                <View
+                    android:layout_width="170dp"
+                    android:layout_height="3dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#FFFFFF" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -75,29 +87,63 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/chivo"
-                    android:text="2 - HELP OTHERS"
+                    android:text="2. Meet in Public Spaces"
                     android:textColor="#FFFFFF"
                     android:textSize="48px"
                     android:textStyle="bold" />
 
-                <View
-                    android:layout_width="150dp"
-                    android:layout_height="2dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="8dp"
-                    android:background="#FFFFFF" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="164dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="40dp"
-                    android:layout_marginBottom="40dp"
+                    android:layout_marginBottom="20dp"
+
+                    android:fontFamily="@font/poppins"
+                    android:textSize="36px"
+                    android:text="This ensures that if anything goes wrong, someone will be able to help."
+                    android:textColor="#FFFFFF" />
+
+                <View
+                    android:layout_width="150dp"
+                    android:layout_height="3dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#FFFFFF" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/chivo"
+                    android:text="3. Use the Codeword"
                     android:textColor="#FFFFFF"
-                    android:background="@drawable/product_spinner"
-                    android:paddingLeft="25dp"
-                    android:text="et, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+                    android:textSize="48px"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="176dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="36px"
+                    android:text="If your deliverer makes you feel unsafe, pretend you don’t understand the codeword and leave."
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:layout_width="176dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="36px"
+                    android:text="If you are unsure if it’s your deliverer approaching, ask for the codeword to confirm."
+                    android:textColor="#FFFFFF" />
 
             </LinearLayout>
         </ScrollView>
