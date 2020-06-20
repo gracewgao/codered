@@ -57,7 +57,7 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
         main = (MainActivity) getActivity();
 
-        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(this);
 
         // recycler view set up
@@ -99,7 +99,7 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     Request req = itemSnapshot.getValue(Request.class);
                     int d = RequestFragment.findDistance(location, req.getLat(), req.getLng());
-                    int wait = req.secAgo((long)req.getTimestamp());
+                    int wait = Request.secAgo((long)req.getTimestamp());
                     // only displays if the request is pending, close enough, and recent enough
                     if (req.getStatus()==0 && d<1000 && wait <= (30*60)) {
                         requests.add(req);
