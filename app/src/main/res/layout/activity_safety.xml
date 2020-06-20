@@ -44,7 +44,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="40dp"
                     android:fontFamily="@font/chivo"
-                    android:text="1.  Don’t disclose any personal
+                    android:text="1. Don’t disclose any personal
                        information"
                     android:textColor="#FFFFFF"
                     android:textSize="48px"
