@@ -110,7 +110,7 @@
                     android:layout_marginBottom="20dp"
                     android:layout_marginLeft="15dp"
                     android:maxWidth="60dp"
-                    android:textColor="#B5B5B5"
+                    android:textColor="#A7A7A7"
                     android:padding="5dp"
                     android:text="DELETE"
                     android:shadowColor="#00000000"
