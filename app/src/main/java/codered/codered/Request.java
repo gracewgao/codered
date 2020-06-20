@@ -43,15 +43,11 @@ class Request {
         Date recordedTime = new Date(time);
         Long currentTime = new Date().getTime();
         Date midnight = new Date(currentTime - (time % (24 * 60 * 60 * 1000)));
-        Date thisWeek = new Date(currentTime - (time % (30 * 24 * 60 * 60 * 1000)));
 
         //Displays the modifiedTime if timestamp is from the current day
         if (recordedTime.after(midnight)) {
             message += "Today at ";
             format = new SimpleDateFormat("h:mm a");
-            message += format.format(recordedTime);
-        } else if (recordedTime.after(thisWeek)){
-            format = new SimpleDateFormat("MMMM d");
             message += format.format(recordedTime);
         } else{
             message ="A long time ago";
