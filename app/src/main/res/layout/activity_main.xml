@@ -263,13 +263,12 @@
 
     <Button
         android:id="@+id/request_button"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginBottom="0dp"
-        android:text="Button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/reqbutton"
 
         app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
