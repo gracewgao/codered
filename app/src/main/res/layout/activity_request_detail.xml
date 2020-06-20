@@ -80,6 +80,15 @@
                 android:background="#F18686"
                 />
 
+            <TextView
+                android:id="@+id/read_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:textColor="#F18686"
+                android:textSize="40px"
+                android:fontFamily="@font/poppins"/>
 
             <TextView
                 android:id="@+id/read_time"
@@ -138,6 +147,15 @@
                 android:layout_marginTop="8dp"
                 android:background="#F18686"
                 />
+            <TextView
+                android:id="@+id/read_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:textColor="#F18686"
+                android:textSize="40px"
+                android:fontFamily="@font/poppins"/>
             <TextView
                 android:id="@+id/read_status"
                 android:layout_width="wrap_content"
