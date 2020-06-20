@@ -222,7 +222,6 @@
                     android:text="NAVIGATE"
                     android:textColor="#FFFFFF"
                     android:textStyle="bold"
-
                     />
 
             </LinearLayout>

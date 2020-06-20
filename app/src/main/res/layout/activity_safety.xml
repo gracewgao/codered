@@ -5,18 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SafetyActivity"
-    android:background="@drawable/backgroundblob">
+    android:background="@drawable/bgtwo">
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_margin="30dp"
         app:cardCornerRadius="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+
+        >
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#396BE2">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -31,7 +34,7 @@
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/chivo"
                     android:text="@string/learn1"
-                    android:textColor="#F18686"
+                    android:textColor="#FFFFFF"
                     android:textSize="72px"
                     android:textStyle="bold" />
 
@@ -39,30 +42,46 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="40dp"
                     android:fontFamily="@font/chivo"
-                    android:text="1 - SEND A REQUEST"
-                    android:textColor="#F18686"
+                    android:text="1. Don’t disclose any personal
+                       information"
+                    android:textColor="#FFFFFF"
                     android:textSize="48px"
                     android:textStyle="bold" />
 
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="164dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="20dp"
+
+                        android:fontFamily="@font/poppins"
+                        android:text="Keep your name, phone number or any other personal details confidential."
+                        android:textColor="#FFFFFF"
+                        android:textSize="36px" />
+
+                    <ImageView
+                        android:layout_width="114dp"
+                        android:layout_height="103dp"
+                        android:paddingTop="20dp"
+                        android:src="@drawable/safe1" />
+                </LinearLayout>
+
+
+
                 <View
                     android:layout_width="170dp"
-                    android:layout_height="2dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="8dp"
-                    android:background="#F18686" />
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="3dp"
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginRight="40dp"
-                    android:background="@drawable/product_spinner"
-                    android:paddingLeft="25dp"
-                    android:text="filler text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+                    android:background="#FFFFFF" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -70,28 +89,78 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/chivo"
-                    android:text="2 - HELP OTHERS"
-                    android:textColor="#F18686"
+                    android:text="2. Meet in Public Spaces"
+                    android:textColor="#FFFFFF"
                     android:textSize="48px"
                     android:textStyle="bold" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="164dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="20dp"
+
+                        android:fontFamily="@font/poppins"
+                        android:text="This ensures that if anything goes wrong, someone will be able to help."
+                        android:textColor="#FFFFFF"
+                        android:textSize="36px" />
+                    <ImageView
+                        android:layout_width="114dp"
+                        android:layout_height="103dp"
+                        android:paddingTop="20dp"
+                        android:src="@drawable/safe2" />
+                </LinearLayout>
+
+
+
                 <View
                     android:layout_width="150dp"
-                    android:layout_height="2dp"
+                    android:layout_height="3dp"
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="8dp"
-                    android:background="#F18686" />
+                    android:background="#FFFFFF" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginBottom="40dp"
-                    android:background="@drawable/product_spinner"
-                    android:paddingLeft="25dp"
-                    android:text="et, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+                    android:fontFamily="@font/chivo"
+                    android:text="3. Use the Codeword"
+                    android:textColor="#FFFFFF"
+                    android:textSize="48px"
+                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="176dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="If your deliverer makes you feel unsafe, pretend you don’t understand the codeword and leave. \n \nIf you are unsure if it’s your deliverer approaching, ask for the codeword to confirm."
+                            android:textColor="#FFFFFF"
+                            android:textSize="36px" />
+
+
+                    <ImageView
+                        android:layout_width="114dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="30dp"
+                        android:src="@drawable/safe3" />
+                </LinearLayout>
+
+
 
             </LinearLayout>
         </ScrollView>

@@ -8,7 +8,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-class Request {
+class Request implements Comparable<Request>{
 
     private String id, message, code;
     private int product, status;
@@ -37,22 +37,11 @@ class Request {
         this.timestamp = ServerValue.TIMESTAMP;
     }
 
-    public static String convertTime(long time){
-        String message = "";
-        Format format;
-        Date recordedTime = new Date(time);
-        Long currentTime = new Date().getTime();
-        Date midnight = new Date(currentTime - (time % (24 * 60 * 60 * 1000)));
-
-        //Displays the modifiedTime if timestamp is from the current day
-        if (recordedTime.after(midnight)) {
-            message += "Today at ";
-            format = new SimpleDateFormat("h:mm a");
-            message += format.format(recordedTime);
-        } else{
-            message ="A long time ago";
-        }
-        return message;
+    public static int secAgo(long time){
+        // finds time difference in minutes
+        Long diff = new Date().getTime() - time;
+        int secDiff = (int) (diff / 1000);
+        return secDiff;
     }
 
     public static String generateCode(){
@@ -133,5 +122,24 @@ class Request {
 
     public void setMeetTime(Object meetTime) {
         this.meetTime = meetTime;
+    }
+
+    @Override
+    public int compareTo(Request o) {
+        // returns 0 (same), 1 (puts o higher), -1 (puts this higher)
+        int d1 = RequestFragment.findDistance(RequestFragment.location, lat, lng);
+        int d2 = RequestFragment.findDistance(RequestFragment.location, o.lat, o.lng);
+        if (d1>d2){
+            return 1;
+        } else if (d1==d2){
+            // TODO: sorts based on time if location is the same
+            if ((long)getTimestamp() < (long)o.getTimestamp()){
+                return 1;
+            } else {
+                return -1;
+            }
+        } else {
+            return -1;
+        }
     }
 }

@@ -87,6 +87,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
                 <Button
+                    android:id="@+id/accept_button"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:fontFamily="@font/poppins"
@@ -100,8 +101,10 @@
                     android:text="ACCEPT"
                     android:shadowColor="@color/fui_transparent"
                     style="?android:attr/borderlessButtonStyle"
+                    android:onClick="goToDetails"
                 />
                 <Button
+
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:fontFamily="@font/poppins"

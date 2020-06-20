@@ -1,39 +1,29 @@
 package codered.codered;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.support.v4.app.ActivityCompat;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import static codered.codered.Request.products;
-import static codered.codered.Request.states;
-
 public class RequestDetailActivity extends AppCompatActivity {
 
     private static final String TAG = "RequestDetailActivity";
     private TextView timeText, messageText, productText, distanceText, codeText;
     private String rId;
+    private Button goButton;
 
     // Firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
-
-    private FusedLocationProviderClient fusedLocationClient;
-    private Location location;
-
-    private final int REQUEST_ACCESS_FINE_LOCATION=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,28 +35,14 @@ public class RequestDetailActivity extends AppCompatActivity {
          productText = findViewById(R.id.read_product);
          distanceText = findViewById(R.id.read_location);
         codeText = findViewById(R.id.read_code);
+        goButton = findViewById(R.id.accept_request);
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             rId = extras.getString("RID");
         }
 
-        // gets user's current location
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            fusedLocationClient.getLastLocation()
-                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location l) {
-                            if (l != null) {
-                                location = l;
-                                loadInfo();
-                            }
-                        }
-                    });
-        } else {
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_ACCESS_FINE_LOCATION);
-        }
+        loadInfo();
 
     }
 
@@ -74,14 +50,27 @@ public class RequestDetailActivity extends AppCompatActivity {
         fireRef.child("requests").child(rId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Request r = dataSnapshot.getValue(Request.class);
+                final Request r = dataSnapshot.getValue(Request.class);
                 messageText.setText(r.getMessage());
                 productText.setText(Request.products[r.getProduct()]);
-                String time = Request.convertTime((long)r.getTimestamp());
+                String time = Request.secAgo((long)r.getTimestamp()) + " min ago";
 //                timeText.setText(time);
-                String distance = RequestFragment.findDistance(location, r.getLat(), r.getLng())+ " m away";
+                String distance = RequestFragment.findDistance(RequestFragment.location, r.getLat(), r.getLng())+ " m away";
                 distanceText.setText(distance);
                 codeText.setText(r.getCode());
+
+                goButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // opens google maps for navigation
+                        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + r.getLat() + ", " + r.getLng()+"&mode=w");
+                        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                        mapIntent.setPackage("com.google.android.apps.maps");
+                        startActivity(mapIntent);
+                    }
+                });
+
+
             }
 
             @Override

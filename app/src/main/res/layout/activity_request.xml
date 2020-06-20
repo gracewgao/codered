@@ -195,7 +195,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:counterEnabled="true"
-                    app:counterMaxLength="50"
+                    app:counterMaxLength="150"
                     android:layout_marginRight="20dp"
                     app:counterOverflowTextAppearance="@style/TextLimitError">
 
@@ -203,11 +203,12 @@
                     android:id="@+id/message_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:lines="3"
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/poppins"
-                    android:textSize="14dp"
+                    android:textSize="16dp"
                     android:hint="Anything you want to add?"
                     android:maxLength="50"/>
                 </android.support.design.widget.TextInputLayout>
@@ -232,7 +233,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/chivo"
-                    android:text="5 - CHOOSE A CODE WORD"
+                    android:text="5 - YOUR CODE WORD"
                     android:textColor="#F18686"
                     android:textSize="48px"
                     android:textStyle="bold" />
@@ -243,6 +244,19 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="8dp"
                     android:background="#F18686" />
+
+                <TextView
+                    android:id="@+id/code_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/border"
+                    android:fontFamily="@font/poppins"
+                    android:padding="15dp"
+                    android:text="Crunchy Bananas"
+                    android:textColor="#F18686"
+                    android:textSize="40px" />
 
                 <!-- submit button-->
                 <Button

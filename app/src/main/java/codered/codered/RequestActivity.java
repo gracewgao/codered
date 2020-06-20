@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -37,10 +38,12 @@ public class RequestActivity extends AppCompatActivity {
     private RadioButton currentLocationButton, chooseLocationButton, currentTimeButton, chooseTimeButton;
     private EditText messageEditText;
     private Spinner productSpinner;
+    private TextView codeTv;
 
     private FusedLocationProviderClient fusedLocationClient;
     private double lat, lng;
     private Object meetTime;
+    private String code;
 
     private final int REQUEST_ACCESS_FINE_LOCATION=1;
 
@@ -135,6 +138,9 @@ public class RequestActivity extends AppCompatActivity {
         messageEditText = findViewById(R.id.message_text);
         productSpinner = findViewById(R.id.products_spinner);
 
+        codeTv = findViewById(R.id.code_text);
+        code = Request.generateCode();
+        codeTv.setText(code);
 
     }
 
@@ -148,7 +154,6 @@ public class RequestActivity extends AppCompatActivity {
         // get whatever data is currently selected on the screen
         String message = messageEditText.getText().toString();
         int product = productSpinner.getSelectedItemPosition();
-        String code = Request.generateCode();
 
         // creates new request object
         Request r = new Request(rId, product, message, code, lat, lng, meetTime);
@@ -168,7 +173,7 @@ public class RequestActivity extends AppCompatActivity {
                         // failed to save
                         Toast.makeText(getApplicationContext(),"Uh-oh! something went wrong, please try again.",Toast.LENGTH_SHORT).show();
                     }
-                });;
+                });
     }
     private void addNotification() {
         // Builds your notification
