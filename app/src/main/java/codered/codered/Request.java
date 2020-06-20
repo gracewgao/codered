@@ -1,5 +1,7 @@
 package codered.codered;
 
+import android.graphics.drawable.Drawable;
+
 import com.google.firebase.database.ServerValue;
 
 import java.text.Format;
@@ -13,6 +15,11 @@ class Request {
     private Object timestamp;
     private Object meetTime;
     private double lat, lng;
+
+    // arrays to translate saved index into a string
+    public static String[] products = {"Tampon", "Pad", "Painkiller"};
+    public static String[] states = {"Pending", "Answered", "Cancelled"};
+    public static int[] productIcons = {R.drawable.tampon, R.drawable.pad, R.drawable.pill};
 
     public Request(){}
 

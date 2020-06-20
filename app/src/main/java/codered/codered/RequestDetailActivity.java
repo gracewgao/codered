@@ -18,8 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import static codered.codered.MainActivity.products;
-import static codered.codered.MainActivity.states;
+import static codered.codered.Request.products;
+import static codered.codered.Request.states;
 
 public class RequestDetailActivity extends AppCompatActivity {
 
@@ -62,6 +62,7 @@ public class RequestDetailActivity extends AppCompatActivity {
                         public void onSuccess(Location l) {
                             if (l != null) {
                                 location = l;
+                                loadInfo();
                             }
                         }
                     });
@@ -69,16 +70,19 @@ public class RequestDetailActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_ACCESS_FINE_LOCATION);
         }
 
+    }
+
+    private void loadInfo(){
         fireRef.child("requests").child(rId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Request r = dataSnapshot.getValue(Request.class);
                 messageText.setText(r.getMessage());
-                productText.setText(products[r.getProduct()]);
-                statusText.setText(states[r.getStatus()]);
+                productText.setText(Request.products[r.getProduct()]);
+                statusText.setText(Request.states[r.getStatus()]);
                 String time = Request.convertTime((long)r.getTimestamp());
                 timeText.setText(time);
-                String distance = MainActivity.findDistance(location, r.getLat(), r.getLng())+ " m away";
+                String distance = RequestFragment.findDistance(location, r.getLat(), r.getLng())+ " m away";
                 distanceText.setText(distance);
                 codeText.setText(r.getCode());
             }
@@ -89,6 +93,5 @@ public class RequestDetailActivity extends AppCompatActivity {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
-
     }
 }
