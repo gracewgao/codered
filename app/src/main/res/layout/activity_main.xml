@@ -24,227 +24,356 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="700dp">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/card_view"
-        android:layout_marginTop="115dp"
-        android:layout_marginLeft="40dp"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        app:cardCornerRadius="15dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardBackgroundColor="#F18686"
-        >
-
-        <TextView
-            android:id="@+id/timeaway1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="3 min away"
-            android:fontFamily="@font/poppins"
-            android:textColor="#FFFFFF"
-            android:textSize="42px"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:id="@+id/card2top"
+                android:layout_width="200dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="110dp"
+                app:cardBackgroundColor="#FABEBE"
+                app:cardCornerRadius="15dp">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/card1"
-        android:layout_marginTop="155dp"
-        android:layout_marginLeft="40dp"
-        android:layout_width="285dp"
-        android:layout_height="135dp"
-        app:cardCornerRadius="15dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+                <TextView
+                    android:id="@+id/timeaway2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="6 min away"
+                    android:textColor="#FFFFFF"
+                    android:textSize="42px"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/item1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="PAINKILLERS  |  30 sec ago"
-            android:fontFamily="@font/poppins"
-            android:textColor="#F18686"
-            android:textSize="48px"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="60dp"
-            android:textStyle="bold"
-            />
-        <TextView
-            android:id="@+id/info_text1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Anyone with Tylenol Extra Strength? I can’t use Advil or any prescriptions."
-            android:fontFamily="@font/poppins"
-            android:textColor="#2A2A2A"
-            android:textSize="36px"
-            android:layout_marginTop="65dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textFontWeight="500"
-            />
+            </android.support.v7.widget.CardView>
 
-        <ImageView
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
-            android:src="@drawable/pill" />
-    </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:id="@+id/card2"
+                android:layout_width="285dp"
+                android:layout_height="135dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="-45dp"
+                app:cardCornerRadius="15dp">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/card2top"
-        android:layout_marginTop="325dp"
-        android:layout_marginLeft="40dp"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardBackgroundColor="#FAA5A5"
-        app:cardCornerRadius="15dp"
-        >
+                <TextView
+                    android:id="@+id/item2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="PADS  |  2 min ago"
+                    android:textColor="#F18686"
+                    android:textSize="48px"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/timeaway2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="5 min away"
-            android:fontFamily="@font/poppins"
-            android:textColor="#FFFFFF"
-            android:textSize="42px"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+                <TextView
+                    android:id="@+id/info_text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="65dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Any sanitary napkin you have would help, doesn’t matter to me!"
+                    android:textColor="#2A2A2A"
+                    android:textFontWeight="500"
+                    android:textSize="36px" />
 
-    </android.support.v7.widget.CardView>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/pad" />
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/card2"
-        android:layout_marginTop="365dp"
-        android:layout_marginLeft="40dp"
-        android:layout_width="285dp"
-        android:layout_height="135dp"
-        app:cardCornerRadius="15dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+            </android.support.v7.widget.CardView>
 
-        <TextView
-            android:id="@+id/item2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="TAMPONS  |  3 min ago"
-            android:fontFamily="@font/poppins"
-            android:textColor="#F18686"
-            android:textSize="48px"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="60dp"
-            android:textStyle="bold"
-            />
-        <TextView
-            android:id="@+id/info_text2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="I’ll be right outside the door of Subway holding a Starbucks frappuccino..."
-            android:fontFamily="@font/poppins"
-            android:textColor="#2A2A2A"
-            android:textSize="36px"
-            android:layout_marginTop="65dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textFontWeight="500"
-            />
-        <ImageView
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
-            android:src="@drawable/tampon" />
 
-    </android.support.v7.widget.CardView>
-    <android.support.v7.widget.CardView
-        android:id="@+id/card2top"
-        android:layout_marginTop="530dp"
-        android:layout_marginLeft="40dp"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardBackgroundColor="#FABEBE"
-        app:cardCornerRadius="15dp"
-        >
+            <android.support.v7.widget.CardView
+                android:id="@+id/card2top"
+                android:layout_width="200dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="30dp"
+                app:cardBackgroundColor="#FAA5A5"
+                app:cardCornerRadius="15dp">
 
-        <TextView
-            android:id="@+id/timeaway2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="6 min away"
-            android:fontFamily="@font/poppins"
-            android:textColor="#FFFFFF"
-            android:textSize="42px"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+                <TextView
+                    android:id="@+id/timeaway2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="5 min away"
+                    android:textColor="#FFFFFF"
+                    android:textSize="42px"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    </android.support.v7.widget.CardView>
+            </android.support.v7.widget.CardView>
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/card2"
-        android:layout_marginTop="570dp"
-        android:layout_marginLeft="40dp"
-        android:layout_width="285dp"
-        android:layout_height="135dp"
-        app:cardCornerRadius="15dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+            <android.support.v7.widget.CardView
+                android:id="@+id/card2"
+                android:layout_width="285dp"
+                android:layout_height="135dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="-45dp"
+                app:cardCornerRadius="15dp">
 
-        <TextView
-            android:id="@+id/item2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="PADS  |  2 min ago"
-            android:fontFamily="@font/poppins"
-            android:textColor="#F18686"
-            android:textSize="48px"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="60dp"
-            android:textStyle="bold"
-            />
-        <TextView
-            android:id="@+id/info_text2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Any sanitary napkin you have would help, doesn’t matter to me!"
-            android:fontFamily="@font/poppins"
-            android:textColor="#2A2A2A"
-            android:textSize="36px"
-            android:layout_marginTop="65dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textFontWeight="500"
-            />
-        <ImageView
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
-            android:src="@drawable/pad" />
+                <TextView
+                    android:id="@+id/item2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="TAMPONS  |  3 min ago"
+                    android:textColor="#F18686"
+                    android:textSize="48px"
+                    android:textStyle="bold" />
 
-    </android.support.v7.widget.CardView>
+                <TextView
+                    android:id="@+id/info_text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="65dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="I’ll be right outside the door of Subway holding a Starbucks frappuccino..."
+                    android:textColor="#2A2A2A"
+                    android:textFontWeight="500"
+                    android:textSize="36px" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/tampon" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view"
+                android:layout_width="200dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="50dp"
+                app:cardBackgroundColor="#F18686"
+                app:cardCornerRadius="15dp">
+
+                <TextView
+                    android:id="@+id/timeaway1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="3 min away"
+                    android:textColor="#FFFFFF"
+                    android:textSize="42px"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card1"
+                android:layout_width="285dp"
+                android:layout_height="135dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="-45dp"
+                app:cardCornerRadius="15dp">
+
+                <TextView
+                    android:id="@+id/item1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="PAINKILLERS  |  30 sec ago"
+                    android:textColor="#F18686"
+                    android:textSize="48px"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/info_text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="65dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Anyone with Tylenol Extra Strength? I can’t use Advil or any prescriptions."
+                    android:textColor="#2A2A2A"
+                    android:textFontWeight="500"
+                    android:textSize="36px" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/pill" />
+
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card2top"
+                android:layout_width="200dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="50dp"
+                app:cardBackgroundColor="#FABEBE"
+                app:cardCornerRadius="15dp">
+
+                <TextView
+                    android:id="@+id/timeaway2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="6 min away"
+                    android:textColor="#FFFFFF"
+                    android:textSize="42px"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card2"
+                android:layout_width="285dp"
+                android:layout_height="135dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="-45dp"
+                app:cardCornerRadius="15dp">
+
+                <TextView
+                    android:id="@+id/item2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="PADS  |  2 min ago"
+                    android:textColor="#F18686"
+                    android:textSize="48px"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/info_text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="65dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Any sanitary napkin you have would help, doesn’t matter to me!"
+                    android:textColor="#2A2A2A"
+                    android:textFontWeight="500"
+                    android:textSize="36px" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/pad" />
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card2top"
+                android:layout_width="200dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="30dp"
+                app:cardBackgroundColor="#FAA5A5"
+                app:cardCornerRadius="15dp">
+
+                <TextView
+                    android:id="@+id/timeaway2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="5 min away"
+                    android:textColor="#FFFFFF"
+                    android:textSize="42px"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card2"
+                android:layout_width="285dp"
+                android:layout_height="135dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="-45dp"
+                app:cardCornerRadius="15dp">
+
+                <TextView
+                    android:id="@+id/item2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="TAMPONS  |  3 min ago"
+                    android:textColor="#F18686"
+                    android:textSize="48px"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/info_text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="65dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="I’ll be right outside the door of Subway holding a Starbucks frappuccino..."
+                    android:textColor="#2A2A2A"
+                    android:textFontWeight="500"
+                    android:textSize="36px" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/tampon" />
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
 
 
     <android.support.design.widget.BottomNavigationView
@@ -263,12 +392,11 @@
 
     <Button
         android:id="@+id/request_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/reqbutton"
-
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 </android.support.constraint.ConstraintLayout>
