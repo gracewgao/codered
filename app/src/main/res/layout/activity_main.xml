@@ -107,7 +107,7 @@
         android:layout_height="80dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:cardBackgroundColor="#F18686"
+        app:cardBackgroundColor="#FAA5A5"
         app:cardCornerRadius="15dp"
         >
 
@@ -164,7 +164,12 @@
             android:layout_marginRight="20dp"
             android:textStyle="bold"
             />
-
+        <ImageView
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:src="@drawable/tampon" />
 
     </android.support.v7.widget.CardView>
 
