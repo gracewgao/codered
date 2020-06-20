@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
@@ -42,10 +43,9 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
     private final int REQUEST_ACCESS_FINE_LOCATION=1;
     private FusedLocationProviderClient fusedLocationClient;
-    private double lat, lng;
     private MainActivity main;
 
-    private Location location;
+    public static Location location;
 
     // Firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
@@ -98,8 +98,17 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
                 requests.clear();
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     Request req = itemSnapshot.getValue(Request.class);
-                    requests.add(req);
+                    int d = RequestFragment.findDistance(location, req.getLat(), req.getLng());
+                    int wait = req.secAgo((long)req.getTimestamp());
+                    // only displays if the request is pending, close enough, and recent enough
+                    if (req.getStatus()==0 && d<1000 && wait <= (30*60)) {
+                        requests.add(req);
+                    }
                 }
+
+                // sorts data based on location
+                Collections.sort(requests);
+
                 // refreshes recycler view
                 mAdapter.notifyDataSetChanged();
             }
@@ -123,4 +132,5 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
     public void onRefresh() {
         getRequests();
     }
+
 }
