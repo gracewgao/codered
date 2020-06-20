@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RequestActivity">
+    tools:context=".RequestActivity"
+    android:background="@drawable/backgroundblob"
+    >
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
@@ -174,14 +176,14 @@
                     android:layout_marginTop="8dp"
                     android:background="#F18686" />
 
-                <TextView
+                <!--<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Add a message"
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/poppins"
-                    />
+                    /> -->
 
                 <EditText
                     android:id="@+id/message_text"
@@ -191,6 +193,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/poppins"
+                    android:textSize="16dp"
                     />
 
                 <!--code word-->

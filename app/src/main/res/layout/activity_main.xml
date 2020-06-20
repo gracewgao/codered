@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
+        app:elevation="0dp"
         android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -32,9 +33,9 @@
         android:id="@+id/request_button"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/reqbutton"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
