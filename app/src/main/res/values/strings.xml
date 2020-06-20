@@ -5,6 +5,8 @@
     <!--<string name="title_dashboard">Dashboard</string>-->
     <string name="title_notifications">learn</string>
 
+    <string name="learn1">How to use codeRED</string>
+
     <string-array name="product_array">
         <item>Tampon</item>
         <item>Pad</item>

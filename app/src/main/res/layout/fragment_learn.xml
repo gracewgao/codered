@@ -112,7 +112,7 @@
                     android:layout_marginTop="35dp"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/poppins"
-                    android:text="How to stay safe while using CodeRed"
+                    android:text="@string/learn1"
                     android:textColor="#FFFFFF"
                     android:textFontWeight="500"
                     android:textSize="42px"
