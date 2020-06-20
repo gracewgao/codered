@@ -11,14 +11,17 @@ class Request {
     private String id, message, code;
     private int product, status;
     private Object timestamp;
+    private double lat, lng;
 
     public Request(){}
 
-    public Request(String requestId, int p, String m, String c){
+    public Request(String requestId, int p, String m, String c, double la, double ln){
         this.id = requestId;
         this.product = p;
         this.message = m;
         this.code = c;
+        this.lat = la;
+        this.lng = ln;
         // sets status to pending when created
         this.status = 0;
         // records time of request
@@ -101,5 +104,21 @@ class Request {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
     }
 }

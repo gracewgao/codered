@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -23,10 +24,14 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RequestActivity extends AppCompatActivity {
 
     private Button submitButton, locationButton;
+    private RadioButton currentButton, chooseButton;
     private EditText messageEditText;
     private Spinner productSpinner;
 
     private FusedLocationProviderClient fusedLocationClient;
+    private double lat, lng;
+
+    private final int REQUEST_ACCESS_FINE_LOCATION=1;
 
     // Firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
@@ -38,11 +43,53 @@ public class RequestActivity extends AppCompatActivity {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        locationButton = findViewById(R.id.location_button);
-        locationButton.setOnClickListener(new View.OnClickListener() {
+        // to choose another location
+        chooseButton = findViewById(R.id.radio_choose);
+        chooseButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                // open map here
+                if (ActivityCompat.checkSelfPermission(RequestActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
+                    fusedLocationClient.getLastLocation()
+                            .addOnSuccessListener(RequestActivity.this, new OnSuccessListener<Location>() {
+                                @Override
+                                public void onSuccess(Location location) {
+                                    // Got last known location. In some rare situations this can be null.
+                                    if (location != null) {
+                                        lat = location.getLatitude();
+                                        lng = location.getLongitude();
+                                    }
+                                }
+                            });
+                    return;
+                } else {
+                    ActivityCompat.requestPermissions(RequestActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_ACCESS_FINE_LOCATION);
+                }
+            }
+        });
+
+        // to use current location
+        currentButton = findViewById(R.id.radio_current);
+        currentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ActivityCompat.checkSelfPermission(RequestActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
+                    fusedLocationClient.getLastLocation()
+                            .addOnSuccessListener(RequestActivity.this, new OnSuccessListener<Location>() {
+                                @Override
+                                public void onSuccess(Location location) {
+                                    // Got last known location. In some rare situations this can be null.
+                                    if (location != null) {
+                                        lat = location.getLatitude();
+                                        lng = location.getLongitude();
+                                    }
+                                }
+                            });
+                    return;
+                } else {
+                    ActivityCompat.requestPermissions(RequestActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_ACCESS_FINE_LOCATION);
+                }
             }
         });
 
@@ -70,25 +117,8 @@ public class RequestActivity extends AppCompatActivity {
         int product = productSpinner.getSelectedItemPosition();
         String code = Request.generateCode();
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling ActivityCompat#requestPermissions
-
-            fusedLocationClient.getLastLocation()
-                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location location) {
-                            // Got last known location. In some rare situations this can be null.
-                            if (location != null) {
-                                // Logic to handle location object
-                            }
-                        }
-                    });
-            return;
-        }
-
-
         // creates new request object
-        Request r = new Request(rId, product, message, code);
+        Request r = new Request(rId, product, message, code, lat, lng);
         requestRef.child(rId).setValue(r)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
