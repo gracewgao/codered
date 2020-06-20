@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -15,9 +16,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
+    // array to translate saved index into a string
+    public static String[] products = {"Tampon", "Pad", "Painkiller"};
+
     // Views
     private TextView mTextMessage;
     private Button requestButton;
+    private CardView detailCard;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -55,6 +60,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, RequestActivity.class);
+                MainActivity.this.startActivity(i);
+            }
+        });
+
+        detailCard = findViewById(R.id.card1);
+        detailCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, RequestDetailActivity.class);
+//                i.putExtra("RID", r.getId());
+                i.putExtra("RID", "-MADgB0kTVdXQnM615tX");
                 MainActivity.this.startActivity(i);
             }
         });
