@@ -13,7 +13,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="60dp"/>
-    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="55dp"
+        android:background="@drawable/shadow"/>
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"
@@ -21,13 +26,14 @@
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
         app:elevation="0dp"
-        android:background="?android:attr/windowBackground"
+        android:background="#FFF8F8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:itemTextColor="#F18686"
         app:itemIconTint="#F18686"
-        app:menu="@menu/navigation" />
+        app:menu="@menu/navigation"
+        />
 
     <Button
         android:id="@+id/request_button"
@@ -37,5 +43,6 @@
         android:background="@drawable/reqbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        />
 </android.support.constraint.ConstraintLayout>

@@ -3,20 +3,20 @@
         <item android:state_pressed="true" >
             <shape android:shape="rectangle"  >
                 <corners android:radius="50dp" />
-                <gradient android:angle="-90" android:startColor="#396BE2" android:endColor="#396BE2"  />
+                <gradient android:angle="-90" android:startColor="#648BE6" android:endColor="#648BE6"  />
             </shape>
         </item>
         <item android:state_focused="true">
             <shape android:shape="rectangle"  >
-                <corners android:radius="3dip" />
+                <corners android:radius="50dp" />
 
-                <solid android:color="#58857e"/>
+                <solid android:color="#2C5AC7"/>
             </shape>
         </item>
         <item >
             <shape android:shape="rectangle"  >
                 <corners android:radius="50dp" />
-                <gradient android:angle="-90" android:startColor="#648BE6" android:endColor="#648BE6" />
+                <gradient android:angle="-90" android:startColor="#2C5AC7" android:endColor="#2C5AC7" />
             </shape>
         </item>
     </selector>

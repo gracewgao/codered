@@ -40,12 +40,11 @@ public class RequestDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_request_detail);
-
-        timeText = findViewById(R.id.read_time);
+        // timeText = findViewById(R.id.read_time);
         messageText = findViewById(R.id.read_message);
-        productText = findViewById(R.id.read_product);
-        statusText = findViewById(R.id.read_status);
-        distanceText = findViewById(R.id.read_location);
+        // productText = findViewById(R.id.read_product);
+        // statusText = findViewById(R.id.read_status);
+        // distanceText = findViewById(R.id.read_location);
         codeText = findViewById(R.id.read_code);
 
         Bundle extras = getIntent().getExtras();
