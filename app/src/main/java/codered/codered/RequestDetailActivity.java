@@ -18,13 +18,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import static codered.codered.MainActivity.products;
-import static codered.codered.MainActivity.states;
+import static codered.codered.Request.products;
+import static codered.codered.Request.states;
 
 public class RequestDetailActivity extends AppCompatActivity {
 
     private static final String TAG = "RequestDetailActivity";
-    private TextView timeText, messageText, productText, statusText, distanceText, codeText;
+    private TextView timeText, messageText, productText, distanceText, codeText;
     private String rId;
 
     // Firebase
@@ -42,9 +42,8 @@ public class RequestDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_request_detail);
         // timeText = findViewById(R.id.read_time);
         messageText = findViewById(R.id.read_message);
-        // productText = findViewById(R.id.read_product);
-        // statusText = findViewById(R.id.read_status);
-        // distanceText = findViewById(R.id.read_location);
+         productText = findViewById(R.id.read_product);
+         distanceText = findViewById(R.id.read_location);
         codeText = findViewById(R.id.read_code);
 
         Bundle extras = getIntent().getExtras();
@@ -61,6 +60,7 @@ public class RequestDetailActivity extends AppCompatActivity {
                         public void onSuccess(Location l) {
                             if (l != null) {
                                 location = l;
+                                loadInfo();
                             }
                         }
                     });
@@ -68,16 +68,18 @@ public class RequestDetailActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_ACCESS_FINE_LOCATION);
         }
 
+    }
+
+    private void loadInfo(){
         fireRef.child("requests").child(rId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Request r = dataSnapshot.getValue(Request.class);
                 messageText.setText(r.getMessage());
-                productText.setText(products[r.getProduct()]);
-                statusText.setText(states[r.getStatus()]);
+                productText.setText(Request.products[r.getProduct()]);
                 String time = Request.convertTime((long)r.getTimestamp());
-                timeText.setText(time);
-                String distance = MainActivity.findDistance(location, r.getLat(), r.getLng())+ " m away";
+//                timeText.setText(time);
+                String distance = RequestFragment.findDistance(location, r.getLat(), r.getLng())+ " m away";
                 distanceText.setText(distance);
                 codeText.setText(r.getCode());
             }
@@ -88,6 +90,5 @@ public class RequestDetailActivity extends AppCompatActivity {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
-
     }
 }

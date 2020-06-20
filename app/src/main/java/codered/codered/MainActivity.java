@@ -23,41 +23,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity
-        implements BottomNavigationView.OnNavigationItemSelectedListener{
+        implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    // arrays to translate saved index into a string
-    public static String[] products = {"Tampon", "Pad", "Painkiller"};
-    public static String[] states = {"Pending", "Answered", "Cancelled"};
-
-    private final int REQUEST_ACCESS_FINE_LOCATION=1;
-    private FusedLocationProviderClient fusedLocationClient;
-    private double lat, lng;
-
-    private Location location;
-
-    // Views
-    //private TextView mTextMessage;
+    // views
     private Button requestButton;
-    //private CardView detailCard;
-    /*private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
-    };*/
-
-    // Firebase
-    DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,44 +53,9 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-
-
-        /*detailCard = findViewById(R.id.card1);
-        detailCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, RequestDetailActivity.class);
-//                i.putExtra("RID", r.getId());
-                i.putExtra("RID", "-MAEqNgPIR7E6SIuVxij");
-                MainActivity.this.startActivity(i);
-            }
-        });*/
-
-        // gets user's current location
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            fusedLocationClient.getLastLocation()
-                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location l) {
-                            if (l != null) {
-                                location = l;
-                            }
-                        }
-                    });
-        } else {
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_ACCESS_FINE_LOCATION);
-        }
-
     }
 
-    public static int findDistance(Location l, double targetLat, double targetLng){
-        Location target = new Location("target");
-        target.setLatitude(targetLat);
-        target.setLongitude(targetLng);
-        int d = (int)Math.floor(l.distanceTo(target));
-        return d;
-    }
+
     private boolean loadFragment(Fragment fragment) {
         if(fragment != null) {
             getSupportFragmentManager()
