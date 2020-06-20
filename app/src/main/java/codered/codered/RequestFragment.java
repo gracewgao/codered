@@ -3,7 +3,6 @@ package codered.codered;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -29,7 +28,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -45,7 +43,6 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
     private final int REQUEST_ACCESS_FINE_LOCATION=1;
     private FusedLocationProviderClient fusedLocationClient;
-    private double lat, lng;
     private MainActivity main;
 
     public static Location location;
@@ -101,16 +98,16 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
                 requests.clear();
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     Request req = itemSnapshot.getValue(Request.class);
-                    // only displays if the request is pending
-                    if (req.getStatus()==0) {
+                    int d = RequestFragment.findDistance(location, req.getLat(), req.getLng());
+                    int wait = req.secAgo((long)req.getTimestamp());
+                    // only displays if the request is pending, close enough, and recent enough
+                    if (req.getStatus()==0 && d<1000 && wait <= (30*60)) {
                         requests.add(req);
                     }
-                    // TODO: set an expiry date
                 }
 
                 // sorts data based on location
                 Collections.sort(requests);
-//                sortRequests(requests);
 
                 // refreshes recycler view
                 mAdapter.notifyDataSetChanged();

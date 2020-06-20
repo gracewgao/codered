@@ -10,15 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.database.ServerValue;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
     private static final String TAG = ItemAdapter.class.getSimpleName();
@@ -28,14 +20,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // views in card
-        public TextView timeTopTv, messageTv, productTv;
+        public TextView topTv, messageTv, productTv;
         public ImageView iconImg;
         public CardView cardView;
 
         public TextView textView;
         public MyViewHolder(View v) {
             super(v);
-            timeTopTv = v.findViewById(R.id.card_time);
+            topTv = v.findViewById(R.id.card_time);
             messageTv = v.findViewById(R.id.card_message);
             productTv = v.findViewById(R.id.card_product);
             iconImg = v.findViewById(R.id.product_icon);
@@ -67,9 +59,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         final Request r = requestList.get(position);
         holder.productTv.setText(Request.products[r.getProduct()]);
         holder.iconImg.setImageResource(Request.productIcons[r.getProduct()]);
-        String timeSent = Request.convertTime((long)r.getTimestamp());
+
+        int secAgo = Request.secAgo((long)r.getTimestamp());
+        String timeSent;
+        if (secAgo < 60){
+            timeSent =  secAgo + " sec ago";
+        } else {
+            timeSent = (secAgo / 60) + " min ago";
+        }
+
         String distance = RequestFragment.findDistance(location, r.getLat(), r.getLng())+ " m away";
-        holder.timeTopTv.setText(timeSent);
+        holder.topTv.setText(timeSent);
+
         if (r.getMessage() != null){
             holder.messageTv.setText(r.getMessage());
         } else {

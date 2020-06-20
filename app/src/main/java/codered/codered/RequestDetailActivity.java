@@ -1,25 +1,15 @@
 package codered.codered;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import static codered.codered.Request.products;
-import static codered.codered.Request.states;
 
 public class RequestDetailActivity extends AppCompatActivity {
 
@@ -57,7 +47,7 @@ public class RequestDetailActivity extends AppCompatActivity {
                 Request r = dataSnapshot.getValue(Request.class);
                 messageText.setText(r.getMessage());
                 productText.setText(Request.products[r.getProduct()]);
-                String time = Request.convertTime((long)r.getTimestamp());
+                String time = Request.secAgo((long)r.getTimestamp()) + " min ago";
 //                timeText.setText(time);
                 String distance = RequestFragment.findDistance(RequestFragment.location, r.getLat(), r.getLng())+ " m away";
                 distanceText.setText(distance);

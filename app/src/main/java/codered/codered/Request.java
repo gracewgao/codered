@@ -37,22 +37,11 @@ class Request implements Comparable<Request>{
         this.timestamp = ServerValue.TIMESTAMP;
     }
 
-    public static String convertTime(long time){
-        String message = "";
-        Format format;
-        Date recordedTime = new Date(time);
-        Long currentTime = new Date().getTime();
-        Date midnight = new Date(currentTime - (time % (24 * 60 * 60 * 1000)));
-
-        //Displays the modifiedTime if timestamp is from the current day
-        if (recordedTime.after(midnight)) {
-            message += "Today at ";
-            format = new SimpleDateFormat("h:mm a");
-            message += format.format(recordedTime);
-        } else{
-            message ="A long time ago";
-        }
-        return message;
+    public static int secAgo(long time){
+        // finds time difference in minutes
+        Long diff = new Date().getTime() - time;
+        int secDiff = (int) (diff / 1000);
+        return secDiff;
     }
 
     public static String generateCode(){
@@ -142,13 +131,13 @@ class Request implements Comparable<Request>{
         int d2 = RequestFragment.findDistance(RequestFragment.location, o.lat, o.lng);
         if (d1>d2){
             return 1;
-//        } else if (d1==d2){
+        } else if (d1==d2){
             // TODO: sorts based on time if location is the same
-//            if (timestamp < o.timestamp){
-//                return 1;
-//            } else {
-//                return -1;
-//            }
+            if ((long)getTimestamp() < (long)o.getTimestamp()){
+                return 1;
+            } else {
+                return -1;
+            }
         } else {
             return -1;
         }
