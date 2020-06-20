@@ -30,11 +30,6 @@ public class RequestDetailActivity extends AppCompatActivity {
     // Firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
 
-    private FusedLocationProviderClient fusedLocationClient;
-    private Location location;
-
-    private final int REQUEST_ACCESS_FINE_LOCATION=1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,22 +46,7 @@ public class RequestDetailActivity extends AppCompatActivity {
             rId = extras.getString("RID");
         }
 
-        // gets user's current location
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            fusedLocationClient.getLastLocation()
-                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location l) {
-                            if (l != null) {
-                                location = l;
-                                loadInfo();
-                            }
-                        }
-                    });
-        } else {
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_ACCESS_FINE_LOCATION);
-        }
+        loadInfo();
 
     }
 
@@ -79,7 +59,7 @@ public class RequestDetailActivity extends AppCompatActivity {
                 productText.setText(Request.products[r.getProduct()]);
                 String time = Request.convertTime((long)r.getTimestamp());
 //                timeText.setText(time);
-                String distance = RequestFragment.findDistance(location, r.getLat(), r.getLng())+ " m away";
+                String distance = RequestFragment.findDistance(RequestFragment.location, r.getLat(), r.getLng())+ " m away";
                 distanceText.setText(distance);
                 codeText.setText(r.getCode());
             }

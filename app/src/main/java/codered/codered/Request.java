@@ -8,7 +8,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-class Request {
+class Request implements Comparable<Request>{
 
     private String id, message, code;
     private int product, status;
@@ -133,5 +133,24 @@ class Request {
 
     public void setMeetTime(Object meetTime) {
         this.meetTime = meetTime;
+    }
+
+    @Override
+    public int compareTo(Request o) {
+        // returns 0 (same), 1 (puts o higher), -1 (puts this higher)
+        int d1 = RequestFragment.findDistance(RequestFragment.location, lat, lng);
+        int d2 = RequestFragment.findDistance(RequestFragment.location, o.lat, o.lng);
+        if (d1>d2){
+            return 1;
+//        } else if (d1==d2){
+            // TODO: sorts based on time if location is the same
+//            if (timestamp < o.timestamp){
+//                return 1;
+//            } else {
+//                return -1;
+//            }
+        } else {
+            return -1;
+        }
     }
 }

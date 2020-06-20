@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.google.firebase.database.ServerValue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -44,7 +45,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
 
     // constructor
     public ItemAdapter(List<Request> requests, Location l, MainActivity m) {
-        requestList = sortRequests(requests);
+        requestList = requests;
         location = l;
         main = m;
     }
@@ -92,9 +93,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         return requestList.size();
     }
 
-    private List<Request> sortRequests(List<Request> requests){
 
-        return requests;
-    }
 
 }

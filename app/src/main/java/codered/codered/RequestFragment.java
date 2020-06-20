@@ -3,6 +3,7 @@ package codered.codered;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,7 +27,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -45,7 +48,7 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
     private double lat, lng;
     private MainActivity main;
 
-    private Location location;
+    public static Location location;
 
     // Firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
@@ -98,8 +101,17 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
                 requests.clear();
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     Request req = itemSnapshot.getValue(Request.class);
-                    requests.add(req);
+                    // only displays if the request is pending
+                    if (req.getStatus()==0) {
+                        requests.add(req);
+                    }
+                    // TODO: set an expiry date
                 }
+
+                // sorts data based on location
+                Collections.sort(requests);
+//                sortRequests(requests);
+
                 // refreshes recycler view
                 mAdapter.notifyDataSetChanged();
             }
@@ -123,4 +135,5 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
     public void onRefresh() {
         getRequests();
     }
+
 }
