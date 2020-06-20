@@ -13,7 +13,7 @@
                         android:bottom="12dp"
                         />
 
-                    <stroke android:width="5px" android:color="#F18686" />
+                    <stroke android:width="5px" android:color="#FFFFFF" />
                     <corners android:radius="30dp" />
                 </shape>
                 <color android:color="#F18686"/>
