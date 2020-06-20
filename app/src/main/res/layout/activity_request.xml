@@ -258,6 +258,8 @@
                     android:textColor="#FFFFFF"
                     android:fontFamily="@font/poppins_medium"
                     android:background="@drawable/buttonstuff"
+                    tools:layout_editor_absoluteX="98dp"
+                    tools:layout_editor_absoluteY="231dp"
                     />
 
             </LinearLayout>
