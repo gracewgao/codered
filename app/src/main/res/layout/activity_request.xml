@@ -210,10 +210,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="NEXT"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="50dp"
                     android:textColor="#FFFFFF"
+                    android:fontFamily="@font/poppins_medium"
                     android:background="@drawable/buttonstuff"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     />
 
             </LinearLayout>
