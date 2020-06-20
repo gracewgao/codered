@@ -88,7 +88,7 @@
             android:layout_marginTop="65dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textStyle="bold"
+            android:textFontWeight="500"
             />
 
         <ImageView
@@ -162,7 +162,7 @@
             android:layout_marginTop="65dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textStyle="bold"
+            android:textFontWeight="500"
             />
         <ImageView
             android:layout_marginTop="15dp"
@@ -188,7 +188,7 @@
             android:id="@+id/timeaway2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="5 min away"
+            android:text="6 min away"
             android:fontFamily="@font/poppins"
             android:textColor="#FFFFFF"
             android:textSize="42px"
@@ -235,7 +235,7 @@
             android:layout_marginTop="65dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textStyle="bold"
+            android:textFontWeight="500"
             />
         <ImageView
             android:layout_marginTop="15dp"
