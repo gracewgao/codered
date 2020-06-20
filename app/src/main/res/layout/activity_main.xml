@@ -396,7 +396,6 @@
         android:layout_height="70dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/reqbutton"
-
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
