@@ -13,57 +13,82 @@
         app:cardCornerRadius="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
         <TextView
             android:id="@+id/message"
-            android:layout_width="274dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="30dp"
             android:fontFamily="@font/chivo"
-            android:text="How to Stay Safe using CodeRed"
+            android:text="How to use codeRED"
             android:textColor="#F18686"
             android:textSize="72px"
             android:textStyle="bold" />
 
         <TextView
-            android:layout_width="274dp"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="125dp"
-            android:layout_marginBottom="525dp"
-            android:text="Code Words"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/chivo"
+            android:text="1 - SEND A REQUEST"
             android:textColor="#F18686"
-            />
+            android:textSize="48px"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="170dp"
+            android:layout_height="2dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="8dp"
+            android:background="#F18686" />
+
+
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="274dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="380dp"
-            android:layout_marginBottom="275dp"
-            android:fontFamily="@font/chivo"
-            android:text="Code Words"
-            android:textColor="#F18686" />
-
-        <TextView
-            android:layout_width="274dp"
-            android:layout_height="207dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="150dp"
-            android:layout_marginBottom="500dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
+            android:paddingLeft="25dp"
+            android:background="@drawable/product_spinner"
             android:text="filler text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/chivo"
+                android:text="2 - HELP OTHERS"
+                android:textColor="#F18686"
+                android:textSize="48px"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="274dp"
-            android:layout_height="207dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="400dp"
-            android:layout_marginBottom="dp"
-            android:text="filler text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+            <View
+                android:layout_width="150dp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="8dp"
+                android:background="#F18686" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="40dp"
+                android:paddingLeft="25dp"
+                android:background="@drawable/product_spinner"
+                android:text="et, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+
+        </LinearLayout>
     </android.support.v7.widget.CardView>
+
 </android.support.constraint.ConstraintLayout>
