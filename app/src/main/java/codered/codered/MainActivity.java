@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.MenuItem;
@@ -21,7 +22,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements BottomNavigationView.OnNavigationItemSelectedListener{
 
     // arrays to translate saved index into a string
     public static String[] products = {"Tampon", "Pad", "Painkiller"};
@@ -34,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
     private Location location;
 
     // Views
-    private TextView mTextMessage;
+    //private TextView mTextMessage;
     private Button requestButton;
-    private CardView detailCard;
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+    //private CardView detailCard;
+    /*private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         }
-    };
+    };*/
 
     // Firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
@@ -65,9 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
+        /*mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);*/
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(this);
+
+        loadFragment(new RequestFragment());
 
         requestButton = findViewById(R.id.request_button);
         requestButton.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        detailCard = findViewById(R.id.card1);
+        /*detailCard = findViewById(R.id.card1);
         detailCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("RID", "-MAEqNgPIR7E6SIuVxij");
                 MainActivity.this.startActivity(i);
             }
-        });
+        });*/
 
         // gets user's current location
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -116,5 +122,29 @@ public class MainActivity extends AppCompatActivity {
         int d = (int)Math.floor(l.distanceTo(target));
         return d;
     }
+    private boolean loadFragment(Fragment fragment) {
+        if(fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
 
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        Fragment fragment = null;
+        switch(menuItem.getItemId()) {
+            case R.id.navigation_home:
+                fragment = new RequestFragment();
+                break;
+            case R.id.navigation_notifications:
+                fragment = new LearnFragment();
+                break;
+        }
+        return loadFragment(fragment);
+    }
 }
