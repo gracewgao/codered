@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,7 +23,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         // views in card
         public TextView topTv, messageTv, productTv;
         public ImageView iconImg;
-        public CardView cardView;
+        public android.widget.Button Button;
 
         public TextView textView;
         public MyViewHolder(View v) {
@@ -31,7 +32,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
             messageTv = v.findViewById(R.id.card_message);
             productTv = v.findViewById(R.id.card_product);
             iconImg = v.findViewById(R.id.product_icon);
-            cardView = v.findViewById(R.id.main_card);
+            Button = v.findViewById(R.id.accept_button);
         }
     }
 
@@ -76,7 +77,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         } else {
             holder.messageTv.setVisibility(View.GONE);
         }
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(main, RequestDetailActivity.class);
