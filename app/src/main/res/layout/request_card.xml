@@ -114,6 +114,7 @@
                     android:padding="5dp"
                     android:text="DELETE"
                     android:shadowColor="#00000000"
+                    style="?android:attr/borderlessButtonStyle"
                     />
 
 
