@@ -20,16 +20,18 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 
 public class RequestActivity extends AppCompatActivity {
 
     private Button submitButton, locationButton;
-    private RadioButton currentButton, chooseButton;
+    private RadioButton currentLocationButton, chooseLocationButton, currentTimeButton, chooseTimeButton;
     private EditText messageEditText;
     private Spinner productSpinner;
 
     private FusedLocationProviderClient fusedLocationClient;
     private double lat, lng;
+    private Object meetTime;
 
     private final int REQUEST_ACCESS_FINE_LOCATION=1;
 
@@ -44,12 +46,12 @@ public class RequestActivity extends AppCompatActivity {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         // to choose another location
-        chooseButton = findViewById(R.id.radio_choose);
-        chooseButton.setOnClickListener(new View.OnClickListener(){
+        chooseLocationButton = findViewById(R.id.radio_location_choose);
+        chooseLocationButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                // TODO: change later
                 if (ActivityCompat.checkSelfPermission(RequestActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-
                     fusedLocationClient.getLastLocation()
                             .addOnSuccessListener(RequestActivity.this, new OnSuccessListener<Location>() {
                                 @Override
@@ -69,8 +71,8 @@ public class RequestActivity extends AppCompatActivity {
         });
 
         // to use current location
-        currentButton = findViewById(R.id.radio_current);
-        currentButton.setOnClickListener(new View.OnClickListener() {
+        currentLocationButton = findViewById(R.id.radio_location_current);
+        currentLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (ActivityCompat.checkSelfPermission(RequestActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -92,6 +94,26 @@ public class RequestActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // to use current time
+        chooseTimeButton = findViewById(R.id.radio_time_choose);
+        chooseTimeButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                meetTime = ServerValue.TIMESTAMP;
+            }
+        });
+
+        // to choose another time
+        chooseTimeButton = findViewById(R.id.radio_time_choose);
+        chooseTimeButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                // TODO: change later
+                meetTime = ServerValue.TIMESTAMP;
+            }
+        });
+
 
         submitButton = findViewById(R.id.submit_button);
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +140,7 @@ public class RequestActivity extends AppCompatActivity {
         String code = Request.generateCode();
 
         // creates new request object
-        Request r = new Request(rId, product, message, code, lat, lng);
+        Request r = new Request(rId, product, message, code, lat, lng, meetTime);
         requestRef.child(rId).setValue(r)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

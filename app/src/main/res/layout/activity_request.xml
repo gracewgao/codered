@@ -76,11 +76,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <RadioButton android:id="@+id/radio_current"
+                <RadioButton android:id="@+id/radio_location_current"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Use current location"/>
-                <RadioButton android:id="@+id/radio_choose"
+                <RadioButton android:id="@+id/radio_location_choose"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Choose another location"/>
@@ -104,6 +104,20 @@
                 android:textColor="#F18686"
                 android:textSize="48px"
                 android:textStyle="bold"/>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RadioButton android:id="@+id/radio_time_current"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ASAP"/>
+                <RadioButton android:id="@+id/radio_time_choose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Choose another time"/>
+            </RadioGroup>
 
             <View
                 android:layout_width="170dp"
