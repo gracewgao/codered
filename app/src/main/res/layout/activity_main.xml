@@ -9,37 +9,40 @@
     tools:context=".MainActivity"
     >
 
-    <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="52dp"
-        android:fontFamily="@font/chivo"
-        android:text="Requests Near You"
-        android:textColor="#F18686"
-        android:textSize="72px"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="700dp">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="52dp"
+                android:fontFamily="@font/chivo"
+                android:text="Requests Near You"
+                android:textColor="#F18686"
+                android:textSize="72px"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <android.support.v7.widget.CardView
                 android:id="@+id/card2top"
                 android:layout_width="200dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="110dp"
+                android:layout_marginTop="35dp"
                 app:cardBackgroundColor="#F18686"
                 app:cardCornerRadius="15dp">
 

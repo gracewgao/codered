@@ -63,7 +63,6 @@ public class RequestActivity extends AppCompatActivity {
                                     }
                                 }
                             });
-                    return;
                 } else {
                     ActivityCompat.requestPermissions(RequestActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_ACCESS_FINE_LOCATION);
                 }
@@ -88,7 +87,6 @@ public class RequestActivity extends AppCompatActivity {
                                     }
                                 }
                             });
-                    return;
                 } else {
                     ActivityCompat.requestPermissions(RequestActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_ACCESS_FINE_LOCATION);
                 }
