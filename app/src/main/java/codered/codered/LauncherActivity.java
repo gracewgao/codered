@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+//This activates the launcher screen upon opening the app
 public class LauncherActivity extends AppCompatActivity {
 
     @Override
@@ -14,11 +15,12 @@ public class LauncherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.launcher);
 
+        //After a specified delay, the screen will change to the MainActivity (Requests for You Page)
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
-                /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(LauncherActivity.this,MainActivity.class);
+                /* Create an Intent that will start the MainActivity  */
+                Intent mainIntent = new Intent(LauncherActivity.this, MainActivity.class);
                 startActivity(mainIntent);
                 finish();
             }

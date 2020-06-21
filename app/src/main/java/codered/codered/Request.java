@@ -19,6 +19,7 @@ class Request implements Comparable<Request>{
     // arrays to translate saved index into a string
     public static String[] products = {"Tampon", "Pad", "Painkiller"};
     public static String[] states = {"Pending", "Answered", "Cancelled"};
+    //Storing the icons of each product
     public static int[] productIcons = {R.drawable.tampon, R.drawable.pad, R.drawable.pill};
 
     public Request(){}
@@ -44,6 +45,7 @@ class Request implements Comparable<Request>{
         return secDiff;
     }
 
+    //Generating the random code word
     public static String generateCode(){
         String[] adj = {"crispy", "moist", "happy", "crunchy", "red", "witty", "furry"};
         String[] noun = {"squirrel", "monkey", "smile", "potato chip", "banana", "ice cream"};
@@ -52,6 +54,8 @@ class Request implements Comparable<Request>{
         return adj[rand1] + " " + noun[rand2];
     }
 
+
+    //Storing and obtaining the contents of the Firebase into objects
     public String getId() {
         return id;
     }
@@ -124,6 +128,7 @@ class Request implements Comparable<Request>{
         this.meetTime = meetTime;
     }
 
+    // Determining which requests are of higher priority based on their distance, and if distances are equal, how long ago it was sent
     @Override
     public int compareTo(Request o) {
         // returns 0 (same), 1 (puts o higher), -1 (puts this higher)
