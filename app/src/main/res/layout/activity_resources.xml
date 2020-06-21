@@ -26,18 +26,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageView
+                <ImageButton
+                    android:layout_marginTop="30dp"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:
-                    android:src="@drawable/close"
-                    />
+                    android:background="@drawable/close"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="30dp"/>
+
 
                 <TextView
                     android:layout_width="258dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="40dp"
                     android:fontFamily="@font/chivo"
                     android:text="@string/learn3"
                     android:textColor="#FFFFFF"
