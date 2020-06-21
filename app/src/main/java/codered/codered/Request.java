@@ -137,7 +137,6 @@ class Request implements Comparable<Request>{
         if (d1>d2){
             return 1;
         } else if (d1==d2){
-            // TODO: sorts based on time if location is the same
             if ((long)getTimestamp() < (long)o.getTimestamp()){
                 return 1;
             } else {

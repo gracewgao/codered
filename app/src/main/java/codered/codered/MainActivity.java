@@ -118,11 +118,13 @@ public class MainActivity extends AppCompatActivity
                         int d = RequestFragment.findDistance(RequestFragment.location, req.getLat(), req.getLng());
                         int wait = Request.secAgo((long) req.getTimestamp());
                         // sends a notification
-                        boolean mine = reqs.contains(req.getId()); //TODO: this is not working??
-                        if (req.getStatus() == 0 && d < 200 && wait <= 30 && !mine) {
-                            String title = "Do you have a " + (Request.products[req.getProduct()]).toLowerCase() + " ?";
-                            String message = "Help out a sister in need! (" + d + " m away)";
-                            addNotification(title, message, req.getProduct());
+                        if (reqs != null){
+                            boolean mine = reqs.contains(req.getId());
+                            if (req.getStatus() == 0 && d < 200 && wait <= 30 && !mine) {
+                                String title = "Do you have a " + (Request.products[req.getProduct()]).toLowerCase() + " ?";
+                                String message = "Help out a sister in need! (" + d + " m away)";
+                                addNotification(title, message, req.getProduct());
+                            }
                         }
                     }
 

@@ -16,6 +16,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class RequestDetailActivity extends AppCompatActivity {
 
     private static final String TAG = "RequestDetailActivity";
@@ -58,9 +62,17 @@ public class RequestDetailActivity extends AppCompatActivity {
                 productText.setText(Request.products[r.getProduct()]);
                 icon.setImageResource(Request.productIcons[r.getProduct()]);
 
-                String time = Request.secAgo((long)r.getTimestamp()) + " min ago";
-//                TODO: change later
-//                timeText.setText(time);
+                long time = (long) r.getMeetTime();
+                String message = "";
+                Format format;
+                Date recordedTime = new Date(time);
+                if (recordedTime.before(new Date())){
+                    message = "ASAP";
+                } else {
+                    format = new SimpleDateFormat("h:mm a");
+                    message = format.format(recordedTime);
+                }
+                timeText.setText(message);
                 String distance = RequestFragment.findDistance(RequestFragment.location, r.getLat(), r.getLng())+ " m away";
                 distanceText.setText(distance);
                 codeText.setText(r.getCode());
