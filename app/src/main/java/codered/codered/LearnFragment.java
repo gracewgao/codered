@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 public class LearnFragment extends Fragment {
 
     private CardView safetyCard;
+    private CardView productCard;
+    private CardView resourceCard;
 
     @Nullable
     @Override
@@ -24,6 +26,24 @@ public class LearnFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), SafetyActivity.class);
+                getActivity().startActivity(i);
+            }
+        });
+        productCard = v.findViewById(R.id.product_card);
+        productCard.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), ProductsActivity.class);
+                getActivity().startActivity(i);
+            }
+        });
+        resourceCard = v.findViewById(R.id.resource_card);
+        resourceCard.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), ResourceActivity.class);
                 getActivity().startActivity(i);
             }
         });

@@ -1,10 +1,15 @@
 package codered.codered;
 
 import android.Manifest;
+import android.app.TimePickerDialog;
+import android.app.NotificationChannel;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +18,13 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -23,12 +34,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class RequestActivity extends AppCompatActivity {
 
     private Button submitButton, locationButton;
     private RadioButton currentLocationButton, chooseLocationButton, currentTimeButton, chooseTimeButton;
     private EditText messageEditText;
     private Spinner productSpinner;
+    private TimePickerDialog timePicker;
     private TextView codeTv;
 
     private FusedLocationProviderClient fusedLocationClient;
@@ -45,6 +62,7 @@ public class RequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
+        // Finds you button from the xml layout file
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -69,6 +87,7 @@ public class RequestActivity extends AppCompatActivity {
                 } else {
                     ActivityCompat.requestPermissions(RequestActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_ACCESS_FINE_LOCATION);
                 }
+
             }
         });
 
@@ -97,8 +116,8 @@ public class RequestActivity extends AppCompatActivity {
         });
 
         // to use current time
-        chooseTimeButton = findViewById(R.id.radio_time_choose);
-        chooseTimeButton.setOnClickListener(new View.OnClickListener(){
+        currentTimeButton = findViewById(R.id.radio_time_current);
+        currentTimeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 meetTime = ServerValue.TIMESTAMP;
@@ -111,7 +130,28 @@ public class RequestActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // TODO: change later
-                meetTime = ServerValue.TIMESTAMP;
+                final Calendar cldr = Calendar.getInstance();
+                int hour = cldr.get(Calendar.HOUR_OF_DAY);
+                int minutes = cldr.get(Calendar.MINUTE);
+                // time picker dialog
+                timePicker = new TimePickerDialog(RequestActivity.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+                                chooseTimeButton.setText(sHour + ":" + sMinute);
+
+                                Date d = new Date();
+                                d.setHours(sHour);
+                                d.setMinutes(sMinute);
+
+                                // if time goes over midnight
+                                if (d.before(new Date())){
+                                   d.setTime(d.getTime()+(24*60*60*1000));
+                                }
+                                meetTime = d.getTime();
+                            }
+                        }, hour, minutes, true);
+                timePicker.show();
             }
         });
 
@@ -133,6 +173,8 @@ public class RequestActivity extends AppCompatActivity {
 
     }
 
+
+
     private void submitRequest() {
 
         // gets the generated id from firebase
@@ -149,6 +191,7 @@ public class RequestActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         // successfully saved
+                        addNotification();
                         Toast.makeText(getApplicationContext(),"Your request has been sent!",Toast.LENGTH_SHORT).show();
                         finish();
                     }
@@ -160,6 +203,28 @@ public class RequestActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Uh-oh! something went wrong, please try again.",Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+    private void addNotification() {
+        // Builds your notification
+        String message = "This is a notification.";
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(RequestActivity.this)
+                .setSmallIcon(R.mipmap.ic_launcher_round)
+                .setContentTitle("My notification")
+                .setContentText(message)
+                .setAutoCancel(true);
+
+
+        // Creates the intent needed to show the notification
+        Intent intent = new Intent(RequestActivity.this, NotificationActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("message", message);
+        PendingIntent pendingIntent = PendingIntent.getActivity(RequestActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(pendingIntent);
+        // Add as notification
+        NotificationManager notificationManager = (NotificationManager)getSystemService(
+                Context.NOTIFICATION_SERVICE
+        );
+        notificationManager.notify(0,builder.build());
     }
 
 }
