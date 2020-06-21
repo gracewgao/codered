@@ -188,8 +188,22 @@ public class RequestActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         // successfully saved
-                        Toast.makeText(getApplicationContext(),"Your request has been sent!",Toast.LENGTH_SHORT).show();
-                        finish();
+                        RadioButton currentLocation = findViewById(R.id.radio_location_current);
+                        RadioButton otherLocation = findViewById(R.id.radio_location_choose);
+                        RadioButton currentTime = findViewById(R.id.radio_time_current);
+                        RadioButton otherTime = findViewById(R.id.radio_time_choose);
+                        if (!currentLocation.isChecked() && !otherLocation.isChecked() && !currentTime.isChecked() && !otherTime.isChecked()) {
+                            Toast.makeText(getApplicationContext(),"Please fill in location and time.",Toast.LENGTH_SHORT).show();
+                        } else if (!currentLocation.isChecked() && !otherLocation.isChecked()) {
+                            Toast.makeText(getApplicationContext(),"Please fill in location.",Toast.LENGTH_SHORT).show();
+                        } else if (!currentTime.isChecked() && !otherTime.isChecked()){
+                            Toast.makeText(getApplicationContext(),"Please fill in time.",Toast.LENGTH_SHORT).show();
+                        } else {
+                            addNotification();
+                            Toast.makeText(getApplicationContext(),"Your request has been sent!",Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
