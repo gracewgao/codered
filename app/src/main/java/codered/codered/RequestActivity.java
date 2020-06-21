@@ -54,6 +54,7 @@ public class RequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
+        createNotificationChannel();
         // Finds you button from the xml layout file
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -178,8 +179,8 @@ public class RequestActivity extends AppCompatActivity {
     private void addNotification() {
         // Builds your notification
         String message = "This is a notification.";
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(RequestActivity.this)
-                .setSmallIcon(R.mipmap.ic_launcher_round)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(RequestActivity.this, "kailey")
+                .setSmallIcon(R.drawable.reqbutton)
                 .setContentTitle("My notification")
                 .setContentText(message)
                 .setAutoCancel(true);
@@ -196,6 +197,21 @@ public class RequestActivity extends AppCompatActivity {
                 Context.NOTIFICATION_SERVICE
         );
         notificationManager.notify(0,builder.build());
+    }
+   private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "studentChannel";
+            String description = "channel for student notifications";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("kailey", name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 
 }
