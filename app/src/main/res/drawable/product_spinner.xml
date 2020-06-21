@@ -7,7 +7,7 @@
             <item>
                 <shape android:shape="rectangle">
                     <padding
-                        android:left="20dp"
+                        android:left="10dp"
                         android:top="12dp"
                         android:right="20dp"
                         android:bottom="12dp"
