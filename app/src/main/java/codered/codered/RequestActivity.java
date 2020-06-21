@@ -199,7 +199,6 @@ public class RequestActivity extends AppCompatActivity {
                         } else if (!currentTime.isChecked() && !otherTime.isChecked()){
                             Toast.makeText(getApplicationContext(),"Please fill in time.",Toast.LENGTH_SHORT).show();
                         } else {
-                            addNotification();
                             Toast.makeText(getApplicationContext(),"Your request has been sent!",Toast.LENGTH_SHORT).show();
                             finish();
                         }
