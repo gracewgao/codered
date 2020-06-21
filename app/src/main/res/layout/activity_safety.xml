@@ -13,10 +13,7 @@
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         >
-
-
 
         <ScrollView
             android:layout_width="match_parent"
@@ -71,7 +68,7 @@
                         android:layout_width="140dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="15dp"
                         android:fontFamily="@font/poppins"
                         android:text="Keep your name, phone number or any other personal details confidential."
                         android:textColor="#FFFFFF"
@@ -91,7 +88,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="3dp"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginRight="40dp"
                     android:background="#FFFFFF" />
 
@@ -99,7 +96,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/chivo"
                     android:text="2. Meet in Public Spaces"
                     android:textColor="#FFFFFF"
@@ -114,7 +111,7 @@
                         android:layout_width="164dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="15dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="20dp"
 
@@ -135,7 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="3dp"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="40dp"
                     android:background="#FFFFFF" />
 
@@ -144,7 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/chivo"
                     android:text="3. Use the Codeword"
                     android:textColor="#FFFFFF"
@@ -159,7 +156,7 @@
                             android:layout_width="176dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="40dp"
-                            android:layout_marginTop="20dp"
+                            android:layout_marginTop="15dp"
                             android:layout_marginBottom="20dp"
                             android:fontFamily="@font/poppins"
                             android:text="If your deliverer makes you feel unsafe, pretend you don’t understand the codeword and leave. \n \nIf you are unsure if it’s your deliverer approaching, ask for the codeword to confirm."
