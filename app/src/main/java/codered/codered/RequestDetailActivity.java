@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,6 +28,7 @@ public class RequestDetailActivity extends AppCompatActivity {
     private ImageView icon;
     private String rId;
     private Button goButton;
+    private ImageButton closeButton;
 
     // Firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
@@ -43,6 +45,14 @@ public class RequestDetailActivity extends AppCompatActivity {
         codeText = findViewById(R.id.read_code);
         goButton = findViewById(R.id.accept_request);
         icon = findViewById(R.id.read_icon);
+
+        closeButton = findViewById(R.id.close_button);
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {

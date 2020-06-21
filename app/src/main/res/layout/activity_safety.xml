@@ -19,7 +19,11 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#396BE2">
+            android:background="#396BE2"
+            android:fadingEdge="horizontal"
+            android:fadingEdgeLength="50dp"
+            android:fillViewport="false"
+            android:requiresFadingEdge="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
