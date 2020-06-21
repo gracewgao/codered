@@ -27,6 +27,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <ImageButton
+                    android:id="@+id/my_image_button"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/closedark"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="30dp"/>
+
                 <!-- spinner for product array-->
 
                 <TextView
@@ -34,7 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/chivo"
                     android:text="Send Request"
                     android:textColor="#F18686"

@@ -27,6 +27,7 @@
                 android:orientation="vertical">
 
                 <ImageButton
+                    android:id="@+id/my_image_button"
                     android:layout_marginTop="30dp"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -38,8 +39,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/chivo"
+                    android:layout_marginTop="10dp"
                     android:text="@string/learn2"
                     android:textColor="#3F3D56"
                     android:textSize="72px"
