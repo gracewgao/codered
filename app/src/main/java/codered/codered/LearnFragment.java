@@ -21,14 +21,18 @@ public class LearnFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_learn, null);
         safetyCard = v.findViewById(R.id.safety_card);
+        productCard = v.findViewById(R.id.product_card);
+        resourceCard = v.findViewById(R.id.resource_card);
         safetyCard.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), SafetyActivity.class);
                 getActivity().startActivity(i);
+
             }
         });
+
         productCard = v.findViewById(R.id.product_card);
         productCard.setOnClickListener(new View.OnClickListener(){
 
@@ -47,8 +51,8 @@ public class LearnFragment extends Fragment {
                 getActivity().startActivity(i);
             }
         });
-
         return v;
+
 
     }
 }
