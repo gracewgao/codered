@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
@@ -59,8 +62,19 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         final Request r = requestList.get(position);
-        // TODO: change asap
-        holder.productTv.setText(Request.products[r.getProduct()] + "   |   ASAP");
+
+        long time = (long) r.getMeetTime();
+        String message = "";
+        Format format;
+        Date recordedTime = new Date(time);
+        if (recordedTime.before(new Date())){
+            message = "ASAP";
+        } else {
+            format = new SimpleDateFormat("h:mm a");
+            message = format.format(recordedTime);
+        }
+
+        holder.productTv.setText(Request.products[r.getProduct()] + "   |   " + message);
         holder.iconImg.setImageResource(Request.productIcons[r.getProduct()]);
 
         int secAgo = Request.secAgo((long)r.getTimestamp());
@@ -68,7 +82,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         if (secAgo < 60){
             timeSent =  "Posted " + secAgo + " sec ago";
         } else {
-            timeSent = (secAgo / 60) + " min ago";
+            timeSent = "Posted " + (secAgo / 60) + " min ago";
         }
         holder.timeTv.setText(timeSent);
         String distance = RequestFragment.findDistance(location, r.getLat(), r.getLng())+ " m away";

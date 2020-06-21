@@ -200,18 +200,20 @@ public class RequestActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Please fill in time.",Toast.LENGTH_SHORT).show();
         } else {
             // creates new request object
+            ArrayList<String> reqs = MainActivity.getArrayList(MainActivity.REQS, RequestActivity.this);
+            if (reqs == null){
+                reqs = new ArrayList<String>();
+            }
+            reqs.add(rId);
+            MainActivity.saveArrayList(reqs, MainActivity.REQS,  RequestActivity.this);
+
             Request r = new Request(rId, product, message, code, lat, lng, meetTime);
             requestRef.child(rId).setValue(r)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             // successfully saved
-                            ArrayList<String> reqs = MainActivity.getArrayList(MainActivity.REQS, RequestActivity.this);
-                            if (reqs == null){
-                                reqs = new ArrayList<String>();
-                            }
-                            reqs.add(rId);
-                            MainActivity.saveArrayList(reqs, MainActivity.REQS,  RequestActivity.this);
+
                             Toast.makeText(getApplicationContext(),"Your request has been sent!",Toast.LENGTH_SHORT).show();
                             finish();
 

@@ -18,15 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageButton
-            android:id="@+id/my_image_button"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:background="@drawable/closedark"
-            android:layout_gravity="right"
-           />
+
 
         <ScrollView
             android:layout_width="match_parent"
@@ -273,6 +265,15 @@
 
         </ScrollView>
 
+        <ImageButton
+            android:id="@+id/my_image_button"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/closedark"
+            android:layout_gravity="right"
+            />
 
     </android.support.v7.widget.CardView>
 
