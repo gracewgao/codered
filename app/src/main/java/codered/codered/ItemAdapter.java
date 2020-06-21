@@ -1,13 +1,13 @@
 package codered.codered;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,7 +23,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         // views in card
         public TextView topTv, messageTv, productTv;
         public ImageView iconImg;
-        public android.widget.Button Button;
+        public android.widget.Button acceptButton;
 
         public TextView textView;
         public MyViewHolder(View v) {
@@ -32,7 +32,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
             messageTv = v.findViewById(R.id.card_message);
             productTv = v.findViewById(R.id.card_product);
             iconImg = v.findViewById(R.id.product_icon);
-            Button = v.findViewById(R.id.accept_button);
+            acceptButton = v.findViewById(R.id.accept_button);
         }
     }
 
@@ -77,12 +77,22 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         } else {
             holder.messageTv.setVisibility(View.GONE);
         }
-        holder.Button.setOnClickListener(new View.OnClickListener() {
+
+        holder.acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(main, RequestDetailActivity.class);
-                i.putExtra("RID", r.getId());
-                main.startActivity(i);
+                new AlertDialog.Builder(main)
+                        .setTitle("Accept Request")
+                        .setMessage("Will you help out with this codeRED by lending a " + (Request.products[r.getProduct()]).toLowerCase() + "?")
+                        .setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(main, RequestDetailActivity.class);
+                                i.putExtra("RID", r.getId());
+                                main.startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("Cancel", null)
+                        .show();
             }
         });
 

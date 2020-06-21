@@ -70,8 +70,7 @@ public class RequestActivity extends AppCompatActivity {
         myImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentLoadNewActivity = new Intent (RequestActivity.this, MainActivity.class);
-                startActivity(intentLoadNewActivity);
+                finish();
             }
         });
         // Finds you button from the xml layout file

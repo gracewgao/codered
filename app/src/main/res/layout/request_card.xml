@@ -32,8 +32,6 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-
-
         android:id="@+id/main_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -78,7 +76,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/poppins"
-                android:text="I’ll be right outside the door of Subway holding a Starbucks frappuccino..."
                 android:textColor="#2A2A2A"
                 android:textFontWeight="500"
                 android:textSize="36px" />
@@ -103,24 +100,6 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:onClick="goToDetails"
                 />
-                <Button
-
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:fontFamily="@font/poppins"
-                    android:background="@drawable/rejectbtn"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="15dp"
-                    android:maxWidth="60dp"
-                    android:textColor="#A7A7A7"
-                    android:padding="5dp"
-                    android:text="DELETE"
-                    android:shadowColor="#00000000"
-                    style="?android:attr/borderlessButtonStyle"
-                    />
-
-
             </LinearLayout>
         </LinearLayout>
 

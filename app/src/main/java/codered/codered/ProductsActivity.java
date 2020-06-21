@@ -19,8 +19,7 @@ public class ProductsActivity extends AppCompatActivity {
         myImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentLoadNewActivity = new Intent (ProductsActivity.this, MainActivity.class);
-                startActivity(intentLoadNewActivity);
+                finish();
             }
         });
     }
