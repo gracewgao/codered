@@ -23,6 +23,8 @@ public class LearnFragment extends Fragment {
         safetyCard = v.findViewById(R.id.safety_card);
         productCard = v.findViewById(R.id.product_card);
         resourceCard = v.findViewById(R.id.resource_card);
+
+        // If the safety card is selected, then the SafetyActivity (How to use codeRED safely page) will open, launching the appropriate XML file
         safetyCard.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -33,7 +35,7 @@ public class LearnFragment extends Fragment {
             }
         });
 
-        productCard = v.findViewById(R.id.product_card);
+        // If the menstrual product card is selected, then the ProductsActivity (How to use codeRED safely page) will open, launching the appropriate XML file
         productCard.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -42,7 +44,8 @@ public class LearnFragment extends Fragment {
                 getActivity().startActivity(i);
             }
         });
-        resourceCard = v.findViewById(R.id.resource_card);
+
+        // If the resource card is selected, then the ResourceActivity (How to use codeRED safely page) will open, launching the appropriate XML file
         resourceCard.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -51,6 +54,7 @@ public class LearnFragment extends Fragment {
                 getActivity().startActivity(i);
             }
         });
+        //returning the view window and its respective fragments e.g. navigation
         return v;
 
 

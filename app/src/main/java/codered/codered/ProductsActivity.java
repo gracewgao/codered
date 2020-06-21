@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+//Java file that loads the Products layout XML
 public class ProductsActivity extends AppCompatActivity {
 
     ImageButton myImageButton;
@@ -15,6 +16,7 @@ public class ProductsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
 
+        //If the exit button is clicked, then the user will be navigated back to the home page
         myImageButton = (ImageButton) findViewById(R.id.my_image_button);
         myImageButton.setOnClickListener(new View.OnClickListener() {
             @Override

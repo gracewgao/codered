@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+// Generates the cards based on data from the Firebase (any requests within the last 30 minutes)
+
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
     private static final String TAG = ItemAdapter.class.getSimpleName();
     private List<Request> requestList;
