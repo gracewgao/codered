@@ -91,6 +91,7 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
     private void getRequests() {
         swipeRefreshLayout.setRefreshing(true);
+        // retrieves info from database
         DatabaseReference requestRef = fireRef.child("requests");
         requestRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -121,6 +122,7 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
         swipeRefreshLayout.setRefreshing(false);
     }
 
+    // finds distance in meters between two locations
     public static int findDistance(Location l, double targetLat, double targetLng){
         Location target = new Location("target");
         target.setLatitude(targetLat);
@@ -129,6 +131,7 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
         return d;
     }
 
+    // reloads when refreshed
     @Override
     public void onRefresh() {
         getRequests();

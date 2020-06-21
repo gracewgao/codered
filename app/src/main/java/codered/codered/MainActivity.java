@@ -60,9 +60,6 @@ public class MainActivity extends AppCompatActivity
         createNotificationChannel();
         setContentView(R.layout.activity_main);
 
-        /*mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);*/
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
 
@@ -79,6 +76,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    // saves array into local storage
     public static void saveArrayList(ArrayList<String> list, String key, Context c){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(c);
         SharedPreferences.Editor editor = prefs.edit();
@@ -88,6 +86,7 @@ public class MainActivity extends AppCompatActivity
         editor.apply();
     }
 
+    // retrieves array from local storage
     public static ArrayList<String> getArrayList(String key, Context c){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(c);
         Gson gson = new Gson();
@@ -96,13 +95,14 @@ public class MainActivity extends AppCompatActivity
         return gson.fromJson(json, type);
     }
 
-
+    // ensures fragment is loaded when returning to activity
     @Override
     protected void onResume() {
         super.onResume();
         loadFragment(new RequestFragment());
     }
 
+    // set up listener for when data changed --> sends relevant notifications to user
     public void setUpNotifs(){
         DatabaseReference requestRef = fireRef.child("requests");
         requestRef.addValueEventListener(new ValueEventListener() {
@@ -117,9 +117,10 @@ public class MainActivity extends AppCompatActivity
                     if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                         int d = RequestFragment.findDistance(RequestFragment.location, req.getLat(), req.getLng());
                         int wait = Request.secAgo((long) req.getTimestamp());
-                        // sends a notification
+                        // sends a notification to alert user of a nearby request posted
                         if (reqs != null){
                             boolean mine = reqs.contains(req.getId());
+                            // if pending request, within 200m and 30 seconds
                             if (req.getStatus() == 0 && d < 200 && wait <= 30 && !mine) {
                                 String title = "Do you have a " + (Request.products[req.getProduct()]).toLowerCase() + " ?";
                                 String message = "Help out a sister in need! (" + d + " m away)";
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity
                             }
                         }
                     }
-
+                    // if the request is the user's own pending request that has been answered
                     if (reqs != null && reqs.contains(req.getId()) && req.getStatus()==1){
                         String title = "Help is on the way!";
                         String message = "Your code word is " + req.getCode();
@@ -145,13 +146,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
-
-    public void goToActivity2 (View view){
-        Intent intent = new Intent (this, RequestDetailActivity.class);
-        startActivity(intent);
-    }
-
-
 
     private boolean loadFragment(Fragment fragment) {
         if(fragment != null) {

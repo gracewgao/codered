@@ -38,6 +38,8 @@ public class RequestDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_request_detail);
+
+        // gets all views
          timeText = findViewById(R.id.read_time);
         messageText = findViewById(R.id.read_message);
          productText = findViewById(R.id.read_product);
@@ -46,6 +48,7 @@ public class RequestDetailActivity extends AppCompatActivity {
         goButton = findViewById(R.id.accept_request);
         icon = findViewById(R.id.read_icon);
 
+        // finishes activity when closed button clicked
         closeButton = findViewById(R.id.close_button);
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,19 +62,25 @@ public class RequestDetailActivity extends AppCompatActivity {
             rId = extras.getString("RID");
         }
 
+        // loads info into views
         loadInfo();
 
     }
 
     private void loadInfo(){
+        // retrives data from firebase using the request ID
         fireRef.child("requests").child(rId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                // creates an object to store info
                 final Request r = dataSnapshot.getValue(Request.class);
+                // sets views with retrieved info
                 messageText.setText(r.getMessage());
                 productText.setText(Request.products[r.getProduct()]);
+                codeText.setText(r.getCode());
                 icon.setImageResource(Request.productIcons[r.getProduct()]);
 
+                // displays time
                 long time = (long) r.getMeetTime();
                 String message = "";
                 Format format;
@@ -83,10 +92,12 @@ public class RequestDetailActivity extends AppCompatActivity {
                     message = format.format(recordedTime);
                 }
                 timeText.setText(message);
+
+                // distance
                 String distance = RequestFragment.findDistance(RequestFragment.location, r.getLat(), r.getLng())+ " m away";
                 distanceText.setText(distance);
-                codeText.setText(r.getCode());
 
+                // navigation button
                 goButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

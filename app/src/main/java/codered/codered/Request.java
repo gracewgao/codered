@@ -1,11 +1,7 @@
 package codered.codered;
 
-import android.graphics.drawable.Drawable;
-
 import com.google.firebase.database.ServerValue;
 
-import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 class Request implements Comparable<Request>{

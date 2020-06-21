@@ -44,21 +44,23 @@ import java.util.Date;
 
 public class RequestActivity extends AppCompatActivity {
 
-    private Button submitButton, locationButton;
+    // views
+    private Button submitButton;
     private RadioButton currentLocationButton, chooseLocationButton, currentTimeButton, chooseTimeButton;
     private EditText messageEditText;
     private Spinner productSpinner;
     private TimePickerDialog timePicker;
     private TextView codeTv;
+    private ImageButton myImageButton;
 
-    private FusedLocationProviderClient fusedLocationClient;
     private double lat, lng;
     private Object meetTime;
     private String code;
 
+    private FusedLocationProviderClient fusedLocationClient;
     private final int REQUEST_ACCESS_FINE_LOCATION=1;
-    ImageButton myImageButton;
-    // Firebase
+
+    // firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
 
     @Override
@@ -66,6 +68,7 @@ public class RequestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
 
+        // closes screen when button clicked
         myImageButton = (ImageButton) findViewById(R.id.my_image_button);
         myImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +76,6 @@ public class RequestActivity extends AppCompatActivity {
                 finish();
             }
         });
-        // Finds you button from the xml layout file
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -88,7 +90,6 @@ public class RequestActivity extends AppCompatActivity {
                             .addOnSuccessListener(RequestActivity.this, new OnSuccessListener<Location>() {
                                 @Override
                                 public void onSuccess(Location location) {
-                                    // Got last known location. In some rare situations this can be null.
                                     if (location != null) {
                                         lat = location.getLatitude();
                                         lng = location.getLongitude();
@@ -165,7 +166,7 @@ public class RequestActivity extends AppCompatActivity {
             }
         });
 
-
+        // when submit button clicked
         submitButton = findViewById(R.id.submit_button);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,10 +175,12 @@ public class RequestActivity extends AppCompatActivity {
             }
         });
 
+        // other views
         messageEditText = findViewById(R.id.message_text);
         productSpinner = findViewById(R.id.products_spinner);
-
         codeTv = findViewById(R.id.code_text);
+
+        // generates and displays code word
         code = Request.generateCode();
         codeTv.setText(code);
     }
@@ -188,10 +191,12 @@ public class RequestActivity extends AppCompatActivity {
         // gets the generated id from firebase
         DatabaseReference requestRef = fireRef.child("requests");
         final String rId = requestRef.push().getKey();
+
         // get whatever data is currently selected on the screen
         String message = messageEditText.getText().toString();
         int product = productSpinner.getSelectedItemPosition();
 
+        // checks that all fields are filled in
         if (!currentLocationButton.isChecked() && !this.chooseLocationButton.isChecked() && !this.currentTimeButton.isChecked() && !this.chooseTimeButton.isChecked()) {
             Toast.makeText(getApplicationContext(),"Please fill in location and time.",Toast.LENGTH_SHORT).show();
         } else if (!currentLocationButton.isChecked() && !chooseLocationButton.isChecked()) {
@@ -199,7 +204,7 @@ public class RequestActivity extends AppCompatActivity {
         } else if (!currentTimeButton.isChecked() && !chooseTimeButton.isChecked()){
             Toast.makeText(getApplicationContext(),"Please fill in time.",Toast.LENGTH_SHORT).show();
         } else {
-            // creates new request object
+            // adds to local storage
             ArrayList<String> reqs = MainActivity.getArrayList(MainActivity.REQS, RequestActivity.this);
             if (reqs == null){
                 reqs = new ArrayList<String>();
@@ -207,13 +212,13 @@ public class RequestActivity extends AppCompatActivity {
             reqs.add(rId);
             MainActivity.saveArrayList(reqs, MainActivity.REQS,  RequestActivity.this);
 
+            // creates new request object
             Request r = new Request(rId, product, message, code, lat, lng, meetTime);
             requestRef.child(rId).setValue(r)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             // successfully saved
-
                             Toast.makeText(getApplicationContext(),"Your request has been sent!",Toast.LENGTH_SHORT).show();
                             finish();
 
