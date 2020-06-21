@@ -78,6 +78,7 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
                                 mAdapter = new ItemAdapter(requests, location, main);
                                 recyclerView.setAdapter(mAdapter);
                                 getRequests();
+                                main.setUpNotifs();
                             }
                         }
                     });

@@ -7,9 +7,9 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
-import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,29 +18,27 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Collections;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     final static String TAG = MainActivity.class.getSimpleName();
+
+    // Phone storage
+    private SharedPreferences pref;
 
     // views
     private Button requestButton;
@@ -50,6 +48,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
 
         createNotificationChannel();
@@ -72,6 +71,31 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        // stores requests sent
+        pref = getSharedPreferences("CODERED", Context.MODE_PRIVATE);
+//        name = pref.getString("NAME", "");
+//
+//        if (null == currentTasks) {
+//            currentTasks = new ArrayList<String>();
+//        }
+//
+//        try {
+//            reqs = (ArrayList<String>) ObjectSerializer.deserialize(prefs.getString(REQS, ObjectSerializer.serialize(new ArrayList<task>())));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadFragment(new RequestFragment());
+    }
+
+    public void setUpNotifs(){
         DatabaseReference requestRef = fireRef.child("requests");
         requestRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -96,13 +120,6 @@ public class MainActivity extends AppCompatActivity
                 Log.e(TAG, "onCancelled: " + databaseError);
             }
         });
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        loadFragment(new RequestFragment());
     }
 
     public void goToActivity2 (View view){
