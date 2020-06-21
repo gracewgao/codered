@@ -6,6 +6,8 @@
     <string name="title_notifications">learn</string>
 
     <string name="learn1">How to use codeRED</string>
+    <string name="learn2">Find out what products are right for you</string>
+    <string name="learn3">Discover menstrual health resources</string>
 
     <string-array name="product_array">
         <item>Tampon</item>
