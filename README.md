@@ -1,4 +1,4 @@
-# codered
+# codeRED
 
 codeRED is an Android app that allows users to request or provide sanitary products. We have all been in situations where we forget our period product essentials, not knowing where to get them or being too embarrassed to ask. Through kind strangers, users can anonymously request for a sanitary product (pads, tampons) or painkillers in these situations. This app also helps transgender men who are afraid to ask and the countless homeless individuals experiencing period poverty (the lack of basic female hygiene products) worldwide.
 
