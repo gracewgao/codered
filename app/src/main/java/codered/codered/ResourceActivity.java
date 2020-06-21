@@ -19,7 +19,7 @@ public class ResourceActivity extends AppCompatActivity {
         myImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentLoadNewActivity = new Intent (ResourceActivity.this, LearnFragment.class);
+                Intent intentLoadNewActivity = new Intent (ResourceActivity.this, MainActivity.class);
                 startActivity(intentLoadNewActivity);
             }
         });

@@ -19,7 +19,7 @@ public class SafetyActivity extends AppCompatActivity {
         myImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentLoadNewActivity = new Intent (SafetyActivity.this, LearnFragment.class);
+                Intent intentLoadNewActivity = new Intent (SafetyActivity.this, MainActivity.class);
                 startActivity(intentLoadNewActivity);
             }
         });
