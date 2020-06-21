@@ -163,6 +163,11 @@
                         />
                 </RadioGroup>
 
+<!--                <TimePicker android:id="@+id/time_picker"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:timePickerMode="clock" />-->
+
 
                 <!-- textbox for message-->
                 <TextView

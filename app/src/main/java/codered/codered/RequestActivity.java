@@ -1,6 +1,7 @@
 package codered.codered;
 
 import android.Manifest;
+import android.app.TimePickerDialog;
 import android.app.NotificationChannel;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -32,12 +34,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class RequestActivity extends AppCompatActivity {
 
     private Button submitButton, locationButton;
     private RadioButton currentLocationButton, chooseLocationButton, currentTimeButton, chooseTimeButton;
     private EditText messageEditText;
     private Spinner productSpinner;
+    private TimePickerDialog timePicker;
     private TextView codeTv;
 
     private FusedLocationProviderClient fusedLocationClient;
@@ -109,8 +117,8 @@ public class RequestActivity extends AppCompatActivity {
         });
 
         // to use current time
-        chooseTimeButton = findViewById(R.id.radio_time_choose);
-        chooseTimeButton.setOnClickListener(new View.OnClickListener(){
+        currentTimeButton = findViewById(R.id.radio_time_current);
+        currentTimeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 meetTime = ServerValue.TIMESTAMP;
@@ -123,7 +131,28 @@ public class RequestActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // TODO: change later
-                meetTime = ServerValue.TIMESTAMP;
+                final Calendar cldr = Calendar.getInstance();
+                int hour = cldr.get(Calendar.HOUR_OF_DAY);
+                int minutes = cldr.get(Calendar.MINUTE);
+                // time picker dialog
+                timePicker = new TimePickerDialog(RequestActivity.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+                                chooseTimeButton.setText(sHour + ":" + sMinute);
+
+                                Date d = new Date();
+                                d.setHours(sHour);
+                                d.setMinutes(sMinute);
+
+                                // if time goes over midnight
+                                if (d.before(new Date())){
+                                   d.setTime(d.getTime()+(24*60*60*1000));
+                                }
+                                meetTime = d.getTime();
+                            }
+                        }, hour, minutes, true);
+                timePicker.show();
             }
         });
 
