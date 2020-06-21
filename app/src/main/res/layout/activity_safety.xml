@@ -127,9 +127,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="3dp"
                     android:layout_marginLeft="40dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginRight="40dp"
-                    android:layout_marginTop="8dp"
                     android:background="#FFFFFF" />
+
 
                 <TextView
                     android:layout_width="wrap_content"

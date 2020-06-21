@@ -19,7 +19,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#396BE2">
+            android:background="#FFFFFF">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/chivo"
                     android:text="@string/learn2"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#3F3D56"
                     android:textSize="72px"
                     android:textStyle="bold" />
 
@@ -43,9 +43,8 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="40dp"
                     android:fontFamily="@font/chivo"
-                    android:text="1. Don’t disclose any personal
-                       information"
-                    android:textColor="#FFFFFF"
+                    android:text="Period Pads"
+                    android:textColor="#3F3D56"
                     android:textSize="48px"
                     android:textStyle="bold" />
 
@@ -62,15 +61,15 @@
                         android:layout_marginTop="20dp"
 
                         android:fontFamily="@font/poppins"
-                        android:text="Keep your name, phone number or any other personal details confidential."
-                        android:textColor="#FFFFFF"
+                        android:text="The easiest product to use, but unsuitable for exercise or swimming."
+                        android:textColor="#3F3D56"
                         android:textSize="36px" />
 
                     <ImageView
                         android:layout_width="114dp"
                         android:layout_height="103dp"
                         android:paddingTop="20dp"
-                        android:src="@drawable/safe1" />
+                        android:src="@drawable/pad" />
                 </LinearLayout>
 
 
@@ -81,7 +80,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="40dp"
-                    android:background="#FFFFFF" />
+                    android:background="#3F3D56" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -89,42 +88,47 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/chivo"
-                    android:text="2. Meet in Public Spaces"
-                    android:textColor="#FFFFFF"
+                    android:text="Tampons"
+                    android:textColor="#3F3D56"
                     android:textSize="48px"
                     android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+
                     android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="164dp"
+
+                    <ImageView
+                        android:layout_width="119dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginRight="10dp"
+                        android:paddingTop="20dp"
+                        android:src="@drawable/tampon" />
+
+                    <TextView
+                        android:layout_width="155dp"
+                        android:layout_height="wrap_content"
+
+                      
+                        android:layout_marginRight="40dp"
                         android:layout_marginBottom="20dp"
 
                         android:fontFamily="@font/poppins"
-                        android:text="This ensures that if anything goes wrong, someone will be able to help."
-                        android:textColor="#FFFFFF"
+                        android:text="Best for exercise and discreetness. Only use for 4-6 hours to prevent Toxic Shock Syndrome!"
+                        android:textColor="#3F3D56"
                         android:textSize="36px" />
-                    <ImageView
-                        android:layout_width="114dp"
-                        android:layout_height="103dp"
-                        android:paddingTop="20dp"
-                        android:src="@drawable/safe2" />
                 </LinearLayout>
 
 
 
                 <View
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="3dp"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="8dp"
-                    android:background="#FFFFFF" />
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="40dp"
+                    android:background="#3F3D56" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -132,8 +136,8 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/chivo"
-                    android:text="3. Use the Codeword"
-                    android:textColor="#FFFFFF"
+                    android:text="Menstrual Cups"
+                    android:textColor="#3F3D56"
                     android:textSize="48px"
                     android:textStyle="bold" />
                 <LinearLayout
@@ -148,16 +152,16 @@
                             android:layout_marginTop="20dp"
                             android:layout_marginBottom="20dp"
                             android:fontFamily="@font/poppins"
-                            android:text="If your deliverer makes you feel unsafe, pretend you don’t understand the codeword and leave. \n \nIf you are unsure if it’s your deliverer approaching, ask for the codeword to confirm."
-                            android:textColor="#FFFFFF"
+                            android:text="Reusable and environmentally friendly. Requires cleaning after each period."
+                            android:textColor="#3F3D56"
                             android:textSize="36px" />
 
 
                     <ImageView
-                        android:layout_width="114dp"
+                        android:layout_width="88dp"
                         android:layout_height="150dp"
-                        android:layout_marginTop="30dp"
-                        android:src="@drawable/safe3" />
+
+                        android:src="@drawable/menstrualcup" />
                 </LinearLayout>
 
 
