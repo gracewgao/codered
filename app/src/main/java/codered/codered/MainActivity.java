@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -28,8 +29,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
@@ -42,6 +46,8 @@ public class MainActivity extends AppCompatActivity
 
     // views
     private Button requestButton;
+    public static String REQS = "CODERED_REQS";
+    private ArrayList<String> reqs;
 
     // Firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
@@ -70,23 +76,25 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        // stores requests sent
-        pref = getSharedPreferences("CODERED", Context.MODE_PRIVATE);
-//        name = pref.getString("NAME", "");
-//
-//        if (null == currentTasks) {
-//            currentTasks = new ArrayList<String>();
-//        }
-//
-//        try {
-//            reqs = (ArrayList<String>) ObjectSerializer.deserialize(prefs.getString(REQS, ObjectSerializer.serialize(new ArrayList<task>())));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-
     }
+
+    public static void saveArrayList(ArrayList<String> list, String key, Context c){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(c);
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        editor.putString(key, json);
+        editor.apply();
+    }
+
+    public static ArrayList<String> getArrayList(String key, Context c){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(c);
+        Gson gson = new Gson();
+        String json = prefs.getString(key, null);
+        Type type = new TypeToken<ArrayList<String>>() {}.getType();
+        return gson.fromJson(json, type);
+    }
+
 
     @Override
     protected void onResume() {
@@ -99,6 +107,9 @@ public class MainActivity extends AppCompatActivity
         requestRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+
+                reqs = getArrayList(REQS, MainActivity.this);
+
                 // clears the list to fetch new data
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     Request req = itemSnapshot.getValue(Request.class);
@@ -106,11 +117,22 @@ public class MainActivity extends AppCompatActivity
                         int d = RequestFragment.findDistance(RequestFragment.location, req.getLat(), req.getLng());
                         int wait = Request.secAgo((long) req.getTimestamp());
                         // sends a notification
-                        if (req.getStatus() == 0 && d < 200 && wait <= 30) {
+                        boolean mine = reqs.contains(req.getId()); //TODO: this is not working??
+                        if (req.getStatus() == 0 && d < 200 && wait <= 30 && !mine) {
                             String title = "Do you have a " + (Request.products[req.getProduct()]).toLowerCase() + " ?";
                             String message = "Help out a sister in need! (" + d + " m away)";
                             addNotification(title, message, req.getProduct());
                         }
+                    }
+
+                    if (reqs != null && reqs.contains(req.getId()) && req.getStatus()==1){
+                        String title = "Help is on the way!";
+                        String message = "Your code word is " + req.getCode();
+                        // removes from pending list stored in phone
+                        reqs.remove(req.getId());
+                        saveArrayList(reqs, REQS, MainActivity.this);
+                        // shows notification that help is coming
+                        addNotification(title, message, req.getProduct());
                     }
                 }
             }

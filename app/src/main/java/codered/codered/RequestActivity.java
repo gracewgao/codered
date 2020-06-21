@@ -38,6 +38,7 @@ import com.google.firebase.database.ServerValue;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -187,42 +188,45 @@ public class RequestActivity extends AppCompatActivity {
 
         // gets the generated id from firebase
         DatabaseReference requestRef = fireRef.child("requests");
-        String rId = requestRef.push().getKey();
+        final String rId = requestRef.push().getKey();
         // get whatever data is currently selected on the screen
         String message = messageEditText.getText().toString();
         int product = productSpinner.getSelectedItemPosition();
 
-        // creates new request object
-        Request r = new Request(rId, product, message, code, lat, lng, meetTime);
-        requestRef.child(rId).setValue(r)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        // successfully saved
-                        RadioButton currentLocation = findViewById(R.id.radio_location_current);
-                        RadioButton otherLocation = findViewById(R.id.radio_location_choose);
-                        RadioButton currentTime = findViewById(R.id.radio_time_current);
-                        RadioButton otherTime = findViewById(R.id.radio_time_choose);
-                        if (!currentLocation.isChecked() && !otherLocation.isChecked() && !currentTime.isChecked() && !otherTime.isChecked()) {
-                            Toast.makeText(getApplicationContext(),"Please fill in location and time.",Toast.LENGTH_SHORT).show();
-                        } else if (!currentLocation.isChecked() && !otherLocation.isChecked()) {
-                            Toast.makeText(getApplicationContext(),"Please fill in location.",Toast.LENGTH_SHORT).show();
-                        } else if (!currentTime.isChecked() && !otherTime.isChecked()){
-                            Toast.makeText(getApplicationContext(),"Please fill in time.",Toast.LENGTH_SHORT).show();
-                        } else {
+        if (!currentLocationButton.isChecked() && !this.chooseLocationButton.isChecked() && !this.currentTimeButton.isChecked() && !this.chooseTimeButton.isChecked()) {
+            Toast.makeText(getApplicationContext(),"Please fill in location and time.",Toast.LENGTH_SHORT).show();
+        } else if (!currentLocationButton.isChecked() && !chooseLocationButton.isChecked()) {
+            Toast.makeText(getApplicationContext(),"Please fill in location.",Toast.LENGTH_SHORT).show();
+        } else if (!currentTimeButton.isChecked() && !chooseTimeButton.isChecked()){
+            Toast.makeText(getApplicationContext(),"Please fill in time.",Toast.LENGTH_SHORT).show();
+        } else {
+            // creates new request object
+            Request r = new Request(rId, product, message, code, lat, lng, meetTime);
+            requestRef.child(rId).setValue(r)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            // successfully saved
+                            ArrayList<String> reqs = MainActivity.getArrayList(MainActivity.REQS, RequestActivity.this);
+                            if (reqs == null){
+                                reqs = new ArrayList<String>();
+                            }
+                            reqs.add(rId);
+                            MainActivity.saveArrayList(reqs, MainActivity.REQS,  RequestActivity.this);
                             Toast.makeText(getApplicationContext(),"Your request has been sent!",Toast.LENGTH_SHORT).show();
                             finish();
-                        }
 
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // failed to save
-                        Toast.makeText(getApplicationContext(),"Uh-oh! something went wrong, please try again.",Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            // failed to save
+                            Toast.makeText(getApplicationContext(),"Uh-oh! something went wrong, please try again.",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
+
     }
 
 }
