@@ -40,6 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
                     android:fontFamily="@font/chivo"
+                    android:layout_marginTop="10dp"
                     android:text="@string/learn2"
                     android:textColor="#3F3D56"
                     android:textSize="72px"

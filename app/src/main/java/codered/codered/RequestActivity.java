@@ -13,8 +13,10 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -54,7 +56,7 @@ public class RequestActivity extends AppCompatActivity {
     private String code;
 
     private final int REQUEST_ACCESS_FINE_LOCATION=1;
-
+    ImageButton myImageButton;
     // Firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
 
@@ -62,6 +64,15 @@ public class RequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
+
+        myImageButton = (ImageButton) findViewById(R.id.my_image_button);
+        myImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentLoadNewActivity = new Intent (RequestActivity.this, MainActivity.class);
+                startActivity(intentLoadNewActivity);
+            }
+        });
         // Finds you button from the xml layout file
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
