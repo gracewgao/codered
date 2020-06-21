@@ -21,6 +21,7 @@
             android:textSize="72px"
             android:textStyle="bold"/>
 
+        <!-- Refreshes Requests -->
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
