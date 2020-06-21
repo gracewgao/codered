@@ -18,23 +18,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageButton
+            android:id="@+id/my_image_button"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/closedark"
+            android:layout_gravity="right"
+           />
+
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fadingEdge="horizontal"
+            android:fadingEdgeLength="50dp"
+            android:fillViewport="false"
+            android:requiresFadingEdge="vertical"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingVertical="30dp"
                 android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/my_image_button"
-                    android:layout_marginTop="30dp"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/closedark"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="30dp"/>
 
                 <!-- spinner for product array-->
 
@@ -54,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/chivo"
                     android:text="1 - WHAT DO YOU NEED?"
                     android:textColor="#F18686"
@@ -74,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:entries="@array/product_array"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/poppins"
                     android:background="@drawable/product_spinner"
                     android:theme="@style/SpinnerTheme"
@@ -86,7 +94,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/chivo"
                     android:text="2 - CHOOSE A LOCATION"
                     android:textColor="#F18686"
@@ -131,7 +139,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/chivo"
                     android:text="3 - CHOOSE A TIME"
                     android:textColor="#F18686"
@@ -155,7 +163,7 @@
                         android:layout_height="wrap_content"
                         android:text="ASAP"
                         android:layout_marginLeft="40dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="30dp"
                         android:fontFamily="@font/poppins"
                         android:background="@drawable/product_spinner"
                         />
@@ -171,18 +179,12 @@
                         />
                 </RadioGroup>
 
-<!--                <TimePicker android:id="@+id/time_picker"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:timePickerMode="clock" />-->
-
-
                 <!-- textbox for message-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/chivo"
                     android:text="4 - ADD A MESSAGE"
                     android:textColor="#F18686"
@@ -196,14 +198,6 @@
                     android:layout_marginTop="8dp"
                     android:background="#F18686" />
 
-                <!--<TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add a message"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/poppins"
-                    /> -->
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -217,35 +211,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lines="2"
+                    android:gravity="top"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/poppins"
                     android:textSize="14dp"
-                    android:hint="Anything you want to add?"
                     android:maxLength="150"/>
                 </android.support.design.widget.TextInputLayout>
-
-                <!--<EditText
-                    android:id="@+id/message_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="20dp"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="16dp"
-                    android:maxLength="140"
-                    android:background="@drawable/product_spinner"
-                    />-->
 
                 <!--code word-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/chivo"
-                    android:text="5 - YOUR CODE WORD"
+                    android:text="5 - YOUR CODE WORD IS"
                     android:textColor="#F18686"
                     android:textSize="48px"
                     android:textStyle="bold" />
@@ -262,10 +243,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/border"
                     android:fontFamily="@font/poppins"
                     android:padding="15dp"
+                    android:textStyle="bold|italic"
                     android:text="Crunchy Bananas"
                     android:textColor="#F18686"
                     android:textSize="40px" />
@@ -279,7 +261,6 @@
                     android:layout_height="wrap_content"
                     android:text="NEXT"
                     android:layout_marginTop="30dp"
-                    android:layout_marginBottom="30dp"
                     android:layout_marginRight="30dp"
                     android:textColor="#FFFFFF"
                     android:fontFamily="@font/poppins_medium"
@@ -289,7 +270,9 @@
                     />
 
             </LinearLayout>
+
         </ScrollView>
+
 
     </android.support.v7.widget.CardView>
 

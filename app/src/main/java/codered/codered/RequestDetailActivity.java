@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +20,7 @@ public class RequestDetailActivity extends AppCompatActivity {
 
     private static final String TAG = "RequestDetailActivity";
     private TextView timeText, messageText, productText, distanceText, codeText;
+    private ImageView icon;
     private String rId;
     private Button goButton;
 
@@ -30,12 +32,13 @@ public class RequestDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_request_detail);
-        // timeText = findViewById(R.id.read_time);
+         timeText = findViewById(R.id.read_time);
         messageText = findViewById(R.id.read_message);
          productText = findViewById(R.id.read_product);
          distanceText = findViewById(R.id.read_location);
         codeText = findViewById(R.id.read_code);
         goButton = findViewById(R.id.accept_request);
+        icon = findViewById(R.id.read_icon);
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
@@ -53,7 +56,10 @@ public class RequestDetailActivity extends AppCompatActivity {
                 final Request r = dataSnapshot.getValue(Request.class);
                 messageText.setText(r.getMessage());
                 productText.setText(Request.products[r.getProduct()]);
+                icon.setImageResource(Request.productIcons[r.getProduct()]);
+
                 String time = Request.secAgo((long)r.getTimestamp()) + " min ago";
+//                TODO: change later
 //                timeText.setText(time);
                 String distance = RequestFragment.findDistance(RequestFragment.location, r.getLat(), r.getLng())+ " m away";
                 distanceText.setText(distance);

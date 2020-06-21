@@ -21,17 +21,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // views in card
-        public TextView topTv, messageTv, productTv;
+        public TextView topTv, messageTv, productTv, timeTv;
         public ImageView iconImg;
         public android.widget.Button acceptButton;
 
         public TextView textView;
         public MyViewHolder(View v) {
             super(v);
-            topTv = v.findViewById(R.id.card_time);
+            topTv = v.findViewById(R.id.card_distance);
             messageTv = v.findViewById(R.id.card_message);
             productTv = v.findViewById(R.id.card_product);
             iconImg = v.findViewById(R.id.product_icon);
+            timeTv = v.findViewById(R.id.card_time);
             acceptButton = v.findViewById(R.id.accept_button);
         }
     }
@@ -58,19 +59,20 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         final Request r = requestList.get(position);
-        holder.productTv.setText(Request.products[r.getProduct()]);
+        // TODO: change asap
+        holder.productTv.setText(Request.products[r.getProduct()] + "   |   ASAP");
         holder.iconImg.setImageResource(Request.productIcons[r.getProduct()]);
 
         int secAgo = Request.secAgo((long)r.getTimestamp());
         String timeSent;
         if (secAgo < 60){
-            timeSent =  secAgo + " sec ago";
+            timeSent =  "Posted " + secAgo + " sec ago";
         } else {
             timeSent = (secAgo / 60) + " min ago";
         }
-
+        holder.timeTv.setText(timeSent);
         String distance = RequestFragment.findDistance(location, r.getLat(), r.getLng())+ " m away";
-        holder.topTv.setText(timeSent);
+        holder.topTv.setText(distance);
 
         if (r.getMessage() != null){
             holder.messageTv.setText(r.getMessage());
