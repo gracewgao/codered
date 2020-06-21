@@ -5,9 +5,9 @@
     <!--<string name="title_dashboard">Dashboard</string>-->
     <string name="title_notifications">learn</string>
 
-    <string name="learn1">How to use codeRED</string>
-    <string name="learn2">Find out what products are right for you</string>
-    <string name="learn3">Discover menstrual health resources</string>
+    <string name="learn1">How to Stay Safe using CodeRED</string>
+    <string name="learn2">Picking the Right Menstrual Product</string>
+    <string name="learn3">Discover Menstrual health resources</string>
 
     <string-array name="product_array">
         <item>Tampon</item>

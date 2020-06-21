@@ -21,6 +21,7 @@ public class LearnFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_learn, null);
         safetyCard = v.findViewById(R.id.safety_card);
+
         safetyCard.setOnClickListener(new View.OnClickListener(){
 
             @Override
