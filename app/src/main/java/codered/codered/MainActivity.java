@@ -98,6 +98,13 @@ public class MainActivity extends AppCompatActivity
         });
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadFragment(new RequestFragment());
+    }
+
     public void goToActivity2 (View view){
         Intent intent = new Intent (this, RequestDetailActivity.class);
         startActivity(intent);
