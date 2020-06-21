@@ -1,12 +1,14 @@
 package codered.codered;
 
 import android.Manifest;
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -77,13 +79,15 @@ public class MainActivity extends AppCompatActivity
                 // clears the list to fetch new data
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     Request req = itemSnapshot.getValue(Request.class);
-                    int d = RequestFragment.findDistance(RequestFragment.location, req.getLat(), req.getLng());
-                    int wait = Request.secAgo((long)req.getTimestamp());
-                    // sends a notification
-                    if (req.getStatus()==0 && d<200 && wait <= 30) {
-                        String title = "Do you have a " + Request.products[req.getProduct()] + " ?";
-                        String message = "Help out a sister in need! (" + d + " m away)";
-                        addNotification(title, message);
+                    if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        int d = RequestFragment.findDistance(RequestFragment.location, req.getLat(), req.getLng());
+                        int wait = Request.secAgo((long) req.getTimestamp());
+                        // sends a notification
+                        if (req.getStatus() == 0 && d < 200 && wait <= 30) {
+                            String title = "Do you have a " + (Request.products[req.getProduct()]).toLowerCase() + " ?";
+                            String message = "Help out a sister in need! (" + d + " m away)";
+                            addNotification(title, message, req.getProduct());
+                        }
                     }
                 }
             }
@@ -127,17 +131,21 @@ public class MainActivity extends AppCompatActivity
         return loadFragment(fragment);
     }
 
-    private void addNotification(String title, String message) {
+    private void addNotification(String title, String message, int product) {
 
         // builds notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "CODERED")
                 .setSmallIcon(R.drawable.reqbutton)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), Request.productIcons[product]))
+                .setColor(getResources().getColor(R.color.colorPrimary))
                 .setContentTitle(title)
                 .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_MAX)
+                .setDefaults(Notification.DEFAULT_ALL)
                 .setAutoCancel(true);
 
         // creates the intent needed to show the notification
-        Intent intent = new Intent(this, NotificationActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("message", message);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -155,7 +163,7 @@ public class MainActivity extends AppCompatActivity
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "codeREDchannel";
             String description = "Channel for codeRED notifications";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel channel = new NotificationChannel("CODERED", name, importance);
             channel.setDescription(description);
             // register the channel with the system; you can't change the importance or other notification behaviors after this

@@ -62,7 +62,6 @@ public class RequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
-        createNotificationChannel();
         // Finds you button from the xml layout file
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -170,9 +169,7 @@ public class RequestActivity extends AppCompatActivity {
         codeTv = findViewById(R.id.code_text);
         code = Request.generateCode();
         codeTv.setText(code);
-
     }
-
 
 
     private void submitRequest() {
@@ -191,7 +188,6 @@ public class RequestActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         // successfully saved
-                        addNotification();
                         Toast.makeText(getApplicationContext(),"Your request has been sent!",Toast.LENGTH_SHORT).show();
                         finish();
                     }
@@ -203,43 +199,6 @@ public class RequestActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Uh-oh! something went wrong, please try again.",Toast.LENGTH_SHORT).show();
                     }
                 });
-    }
-    private void addNotification() {
-        // Builds your notification
-        String message = "This is a notification.";
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(RequestActivity.this, "kailey")
-                .setSmallIcon(R.drawable.reqbutton)
-                .setContentTitle("My notification")
-                .setContentText(message)
-                .setAutoCancel(true);
-
-
-        // Creates the intent needed to show the notification
-        Intent intent = new Intent(RequestActivity.this, NotificationActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("message", message);
-        PendingIntent pendingIntent = PendingIntent.getActivity(RequestActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.setContentIntent(pendingIntent);
-        // Add as notification
-        NotificationManager notificationManager = (NotificationManager)getSystemService(
-                Context.NOTIFICATION_SERVICE
-        );
-        notificationManager.notify(0,builder.build());
-    }
-   private void createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "studentChannel";
-            String description = "channel for student notifications";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("kailey", name, importance);
-            channel.setDescription(description);
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
     }
 
 }
