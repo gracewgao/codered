@@ -32,7 +32,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -166,8 +165,14 @@ public class MainActivity extends AppCompatActivity
             case R.id.navigation_home:
                 fragment = new RequestFragment();
                 break;
-            case R.id.navigation_notifications:
+            case R.id.navigation_idk:
+                // TODO - add screen here
+                break;
+            case R.id.navigation_learn:
                 fragment = new LearnFragment();
+                break;
+            case R.id.navigation_profile:
+                LauncherActivity.signOut(this);
                 break;
         }
         return loadFragment(fragment);

@@ -6,11 +6,12 @@ import java.util.Date;
 
 class Request implements Comparable<Request>{
 
-    private String id, message, code;
+    private String id, uId, dId, message, code;
     private int product, status;
     private Object timestamp;
     private Object meetTime;
     private double lat, lng;
+    private boolean anon;
 
     // arrays to translate saved index into a string
     public static String[] products = {"Tampon", "Pad", "Painkiller"};
@@ -20,8 +21,10 @@ class Request implements Comparable<Request>{
 
     public Request(){}
 
-    public Request(String requestId, int p, String m, String c, double la, double ln, Object t){
+    public Request(String requestId, String userId, int p, String m, String c, double la, double ln, Object t, boolean a){
         this.id = requestId;
+        this.uId = userId;
+        this.dId = null;
         this.product = p;
         this.message = m;
         this.code = c;
@@ -32,6 +35,7 @@ class Request implements Comparable<Request>{
         this.status = 0;
         // records time of request
         this.timestamp = ServerValue.TIMESTAMP;
+        this.anon = a;
     }
 
     public static int secAgo(long time){
@@ -124,6 +128,14 @@ class Request implements Comparable<Request>{
         this.meetTime = meetTime;
     }
 
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
+    }
+
     // Determining which requests are of higher priority based on their distance, and if distances are equal, how long ago it was sent
     @Override
     public int compareTo(Request o) {
@@ -141,5 +153,22 @@ class Request implements Comparable<Request>{
         } else {
             return -1;
         }
+    }
+
+
+    public boolean isAnon() {
+        return anon;
+    }
+
+    public void setAnon(boolean anon) {
+        this.anon = anon;
+    }
+
+    public String getdId() {
+        return dId;
+    }
+
+    public void setdId(String dId) {
+        this.dId = dId;
     }
 }

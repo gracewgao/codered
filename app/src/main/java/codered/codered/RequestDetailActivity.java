@@ -120,6 +120,7 @@ public class RequestDetailActivity extends AppCompatActivity {
 
         // sets status as answered
         fireRef.child("requests").child(rId).child("status").setValue(1);
+        fireRef.child("requests").child(rId).child("dId").setValue(LauncherActivity.user.getUid());
 
     }
 }

@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -35,6 +36,7 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
     private SwipeRefreshLayout swipeRefreshLayout;
     public RecyclerView recyclerView;
+    private TextView msgView;
     private View view;
 
     private List<Request> requests = new ArrayList<>();
@@ -66,6 +68,8 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
         layoutManager = new LinearLayoutManager(main);
         recyclerView.setLayoutManager(layoutManager);
 
+        msgView = view.findViewById(R.id.no_new_requests);
+
         // gets user's current location
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(main);
         if (ActivityCompat.checkSelfPermission(main, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -78,6 +82,12 @@ public class RequestFragment extends Fragment implements SwipeRefreshLayout.OnRe
                                 mAdapter = new ItemAdapter(requests, location, main);
                                 recyclerView.setAdapter(mAdapter);
                                 getRequests();
+
+                                // shows message if there are no new requests
+                                if (requests.isEmpty()){
+                                    msgView.setVisibility(View.GONE);
+                                }
+
                                 main.setUpNotifs();
                             }
                         }

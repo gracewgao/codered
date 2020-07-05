@@ -6,10 +6,27 @@
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_home" />
 
+    <!-- Profile -->
+    <item
+        android:id="@+id/navigation_idk"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="idk" />
+
     <!-- Learn -->
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_placeholder"
+        android:title="ask" />
+
+    <!-- Learn -->
+    <item
+        android:id="@+id/navigation_learn"
         android:icon="@drawable/ic_baseline_book_24"
         android:title="@string/title_notifications" />
+
+    <!-- Profile -->
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="profile" />
 
 </menu>

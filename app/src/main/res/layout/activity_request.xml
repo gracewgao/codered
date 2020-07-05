@@ -244,6 +244,12 @@
                     android:textColor="#F18686"
                     android:textSize="40px" />
 
+                <CheckBox
+                    android:id="@+id/anon_check"
+                    android:text="Post anonymously"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
                 <!-- submit button-->
                 <Button
                     android:layout_gravity="right"

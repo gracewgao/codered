@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
@@ -47,6 +48,7 @@ public class RequestActivity extends AppCompatActivity {
     // views
     private Button submitButton;
     private RadioButton currentLocationButton, chooseLocationButton, currentTimeButton, chooseTimeButton;
+    private CheckBox anonCheck;
     private EditText messageEditText;
     private Spinner productSpinner;
     private TimePickerDialog timePicker;
@@ -179,6 +181,7 @@ public class RequestActivity extends AppCompatActivity {
         messageEditText = findViewById(R.id.message_text);
         productSpinner = findViewById(R.id.products_spinner);
         codeTv = findViewById(R.id.code_text);
+        anonCheck = findViewById(R.id.anon_check);
 
         // generates and displays code word
         code = Request.generateCode();
@@ -195,6 +198,11 @@ public class RequestActivity extends AppCompatActivity {
         // get whatever data is currently selected on the screen
         String message = messageEditText.getText().toString();
         int product = productSpinner.getSelectedItemPosition();
+
+        boolean anon = false;
+        if (anonCheck.isChecked()){
+            anon = true;
+        }
 
         // checks that all fields are filled in
         if (!currentLocationButton.isChecked() && !this.chooseLocationButton.isChecked() && !this.currentTimeButton.isChecked() && !this.chooseTimeButton.isChecked()) {
@@ -213,7 +221,8 @@ public class RequestActivity extends AppCompatActivity {
             MainActivity.saveArrayList(reqs, MainActivity.REQS,  RequestActivity.this);
 
             // creates new request object
-            Request r = new Request(rId, product, message, code, lat, lng, meetTime);
+            String uId = LauncherActivity.user.getUid();
+            Request r = new Request(rId, uId, product, message, code, lat, lng, meetTime, anon);
             requestRef.child(rId).setValue(r)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override

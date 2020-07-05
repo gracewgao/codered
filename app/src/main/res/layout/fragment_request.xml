@@ -21,6 +21,13 @@
             android:textSize="72px"
             android:textStyle="bold"/>
 
+        <TextView
+            android:id="@+id/no_new_requests"
+            android:text="No new requests!"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <!-- Refreshes Requests -->
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh_layout"
@@ -35,8 +42,9 @@
                 android:fadingEdge="horizontal"
                 android:fadingEdgeLength="50dp"
                 android:fillViewport="false"
-                android:requiresFadingEdge="vertical"/>
+                android:requiresFadingEdge="vertical">
 
+            </android.support.v7.widget.RecyclerView>
         </android.support.v4.widget.SwipeRefreshLayout>
 
     </LinearLayout>

@@ -5,14 +5,22 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -62,7 +70,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
 
     // replaces the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
         final Request r = requestList.get(position);
 
         long time = (long) r.getMeetTime();
@@ -79,14 +87,40 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         holder.productTv.setText(Request.products[r.getProduct()] + "   |   " + message);
         holder.iconImg.setImageResource(Request.productIcons[r.getProduct()]);
 
-        int secAgo = Request.secAgo((long)r.getTimestamp());
-        String timeSent;
-        if (secAgo < 60){
-            timeSent =  "Posted " + secAgo + " sec ago";
+        if (r.isAnon()){
+            String u = "Anonymous";
+            int secAgo = Request.secAgo((long)r.getTimestamp());
+            String timeSent = "Posted by "  + u + " ";
+            if (secAgo < 60){
+                timeSent +=  secAgo + " sec ago";
+            } else {
+                timeSent += (secAgo / 60) + " min ago";
+            }
+            holder.timeTv.setText(timeSent);
         } else {
-            timeSent = "Posted " + (secAgo / 60) + " min ago";
+            // retrieves info from database
+            FirebaseDatabase.getInstance().getReference().child("users").child(r.getuId()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    // TODO - clean up this mess
+                    User poster = snapshot.getValue(User.class);
+                    String u = poster.getName();
+                    int secAgo = Request.secAgo((long)r.getTimestamp());
+                    String timeSent = "Posted by "  + u + " ";
+                    if (secAgo < 60){
+                        timeSent +=  secAgo + " sec ago";
+                    } else {
+                        timeSent += (secAgo / 60) + " min ago";
+                    }
+                    holder.timeTv.setText(timeSent);
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.e(TAG, "onCancelled: " + databaseError);
+                }
+            });
         }
-        holder.timeTv.setText(timeSent);
+
         String distance = RequestFragment.findDistance(location, r.getLat(), r.getLng())+ " m away";
         holder.topTv.setText(distance);
 
@@ -116,6 +150,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
 
 
     }
+
 
     // returns size of list
     @Override
