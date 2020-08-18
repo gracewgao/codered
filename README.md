@@ -11,9 +11,10 @@ Along with the providing and requesting of period products, codeRED has a “Lea
 A hackathon project by Bonnie, Kailey, Judy and Grace :)
 
 # Screenshots
-![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/484/datas/original.png) 
-![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/483/datas/original.png) 
-![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/482/datas/original.png) 
-![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/481/datas/original.png) 
-![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/485/datas/original.png) 
+![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/484/datas/original.jpg) 
+![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/483/datas/original.jpg) 
+![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/482/datas/original.jpg) 
+![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/481/datas/original.jpg) 
+![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/485/datas/original.jpg) 
+![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/485/datas/original.jpg) 
 ![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/173/datas/original.png) 
