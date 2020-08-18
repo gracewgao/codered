@@ -7,3 +7,13 @@ By filling out a request form in the app, the user can easily ask for a product,
 To help others when they are in need, there is a ‘Requests Near You' screen, which displays pending requests sent within the past 30 minutes, and that are within a one-kilometre radius. It is sorted by distance and time, and app notifications are sent to users within 200m, whenever a new request is added. If a user accepts the request, the sender will be notified and the request will be marked as completed!
 
 Along with the providing and requesting of period products, codeRED has a “Learn” page providing educational resources on choosing sanitary products, menstrual health, and how to stay safe while using codeRED - in hopes of empowering women, transmen, and those suffering from homelessness to take control of their own health as well as fostering a supportive community.
+
+A hackathon project by Bonnie, Kailey, Judy and Grace :)
+
+# Screenshots
+![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/484/datas/original.png) 
+![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/483/datas/original.png) 
+![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/482/datas/original.png) 
+![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/481/datas/original.png) 
+![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/485/datas/original.png) 
+![alt text](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/130/173/datas/original.png) 
