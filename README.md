@@ -14,6 +14,12 @@ Along with the providing and requesting of period products, codeRED has a “Lea
 
 **1st Place at MLH Hack Girl Summer**
 
+### Technologies
+Made with love using:
+ - Java & XML in Android Studio
+ - Firebase
+ - Google Maps API
+
 ### Quick Preview
 Here's a glimpse into what it looks like! <br /><br />
 <img src="screenshots/requests.jpg" alt="Requests Screenshot" width="20%">
