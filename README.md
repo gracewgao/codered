@@ -16,11 +16,11 @@ Along with the providing and requesting of period products, codeRED has a “Lea
 
 ### Quick Preview
 Here's a glimpse into what it looks like! <br /><br />
-<img src="screenshots/requests.jpg" alt="Requests Screenshot" width="170px">
-<img src="screenshots/new.jpg" alt="New Screenshot" width="170px">
-<img src="screenshots/notification.jpg" alt="Notification Screenshot" width="170px">
-<img src="screenshots/learn.jpg" alt="Learn Screenshot" width="170px">
-<img src="screenshots/learn1.jpg" alt="Learn Screenshot" width="170px">
+<img src="screenshots/requests.jpg" alt="Requests Screenshot" width="20%">
+<img src="screenshots/new.jpg" alt="New Screenshot" width="20%">
+<img src="screenshots/notification.jpg" alt="Notification Screenshot" width="20%">
+<img src="screenshots/learn.jpg" alt="Learn Screenshot" width="20%">
+<img src="screenshots/learn1.jpg" alt="Learn Screenshot" width="20%">
 
 ### Contributing
 Please feel free report bugs and add any ideas you like!
